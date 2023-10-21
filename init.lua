@@ -49,5 +49,10 @@ require("lazy").setup({
 		dependencies = {'nvim-tree/nvim-web-devicons', opt = true}
 	},
 
+	-- Syntax Highlighting Plugin nvim-treesitter
+	{
+		'nvim-treesitter/nvim-treesitter', build = ':TSUpdate'
+	},
+
 })
 
