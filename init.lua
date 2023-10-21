@@ -43,5 +43,11 @@ require("lazy").setup({
 	 'rose-pine/neovim', name = 'rose-pine'
 	},
 
+	-- Statusline Plugin lualine.nvim
+	{
+		'nvim-lualine/lualine.nvim',
+		dependencies = {'nvim-tree/nvim-web-devicons', opt = true}
+	},
+
 })
 
