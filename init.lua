@@ -38,7 +38,10 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 
-	-- ADD PACKAGES HERE ...
-	
+	-- Color Scheme Rose Pine
+	{
+	 'rose-pine/neovim', name = 'rose-pine'
+	},
+
 })
 
