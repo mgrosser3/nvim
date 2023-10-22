@@ -64,5 +64,14 @@ require("lazy").setup({
 	{'hrsh7th/nvim-cmp'},
 	{'L3MON4D3/LuaSnip'},
 
+	-- Org Mode
+	{
+		'nvim-orgmode/orgmode',
+		dependencies = {
+			{ 'nvim-treesitter/nvim-treesitter', lazy = true },
+		},
+		event = 'VeryLazy'
+	},
+
 })
 
