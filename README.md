@@ -6,6 +6,7 @@
 - lualine
 - treesitter
 - lsp-zero
+- nvim-orgmode
 
 ## Windows
 - XDG_CONFIG_HOME = ~\.config
