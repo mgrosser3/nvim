@@ -26,7 +26,7 @@ https://github.com/nvim-orgmode/orgmode
 
 ## Setup on Windows
 
-I personally prefer a .config folder in my home direcotry on Windows.
+I personally prefer a config folder in my home direcotry on Windows.
 Because I don't like looking for things in the hidden Windows AppData
 folder. To have a similar experiance as on Linux, I set the environment
 variable `XDG_CONFIG_HOME = $env:USERPROFILE\.config`.
