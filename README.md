@@ -9,6 +9,9 @@ way to question my own needs for an IDE.
 
 ## Plugins
 
+### lazy.vim
+https://github.com/folke/lazy.nvim
+
 ### Rose Pine
 https://github.com/rose-pine/neovim
 
