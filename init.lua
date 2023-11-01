@@ -60,15 +60,22 @@ require("lazy").setup({
 		dependencies = { 'nvim-lua/plenary.nvim' }
 	},
 
+	-----------------------------------------------------
 	-- Language Server Protocol (LSP) Setup
-	-- VonHeikemen/lsp-zero.nvim
+	-- see VonHeikemen/lsp-zero.nvim
+	-----------------------------------------------------
+	
+	-- Mason Package Manager
 	{'williamboman/mason.nvim'},
   {'williamboman/mason-lspconfig.nvim'},
+
 	{'VonHeikemen/lsp-zero.nvim', branch = 'v3.x'},
 	{'neovim/nvim-lspconfig'},
 	{'hrsh7th/cmp-nvim-lsp'},
 	{'hrsh7th/nvim-cmp'},
 	{'L3MON4D3/LuaSnip'},
+
+	-----------------------------------------------------
 
 	-- Org Mode
 	{
@@ -81,3 +88,28 @@ require("lazy").setup({
 
 })
 
+
+--
+-- Experimental Custom CMake Support
+-- Tested on Windows only!
+-- 
+-- Build directory is hard coded to './bulid'.
+-- Only debug build is supported.
+--
+
+-- CMake performs a debug build.
+function cmake_build()
+	vim.cmd(":!cmake --build build/ --config Debug")
+end
+
+-- CMake creates a NMake Makefile project and use the
+-- build direcotry './build'.
+function cmake_config()
+	vim.cmd(":!cmake -G \"NMake Makefiles\" -B build")
+end
+
+vim.keymap.set('n', '<leader>cb', cmake_build)
+vim.keymap.set('n', '<leader>cc', cmake_config)
+
+vim.api.nvim_create_user_command('CMakeConfig', cmake_config, {})
+vim.api.nvim_create_user_command('CMakeBuild', cmake_build, {})
