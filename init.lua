@@ -79,5 +79,10 @@ require("lazy").setup({
 		event = 'VeryLazy'
 	},
 
+	{
+		'Shatur/neovim-cmake',
+		event = 'VeryLazy'
+	},
+
 })
 
