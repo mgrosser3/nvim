@@ -55,6 +55,11 @@ require("lazy").setup({
 		'nvim-treesitter/nvim-treesitter', build = ':TSUpdate'
 	},
 
+	{
+		'nvim-telescope/telescope.nvim', branch = '0.1.x',
+		dependencies = { 'nvim-lua/plenary.nvim' }
+	},
+
 	-- Language Server Protocol (LSP) Setup
 	-- VonHeikemen/lsp-zero.nvim
 	{'williamboman/mason.nvim'},

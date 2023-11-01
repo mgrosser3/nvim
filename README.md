@@ -18,6 +18,9 @@ https://github.com/rose-pine/neovim
 ### LuaLine
 https://github.com/nvim-lualine/lualine.nvim
 
+### Telescope
+https://github.com/nvim-telescope/telescope.nvim
+
 ### Treesitter
 https://github.com/nvim-treesitter/nvim-treesitter
 
