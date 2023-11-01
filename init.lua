@@ -79,5 +79,10 @@ require("lazy").setup({
 		event = 'VeryLazy'
 	},
 
+	-- CMake Tools
+	{
+		'Civitasv/cmake-tools.nvim'
+	},
+
 })
 
