@@ -1,5 +1,7 @@
 # My Neovim Configuration
 
+<a href="/LICENSE">![License](https://img.shields.io/github/license/mgrosser3/nvim)</a>
+
 Welcome to my personal Neovim configuration. There are already great configurations like
 [LunarVim](https://www.lunarvim.org/) or [LazyVim](https://www.lazyvim.org/) that allow
 a quick start into Neovim for developers. I decided to create my own configuration from
