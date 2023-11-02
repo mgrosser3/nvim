@@ -43,3 +43,9 @@ Since a few additional tools are needed from time to time, it makes
 sense to install a package manager like [scoop](https://scoop.sh/).
 For example Treesitter requires a C++ compiler, which we can easily
 install using `scoop install gcc`.
+
+## Customize OrgMode
+
+ The default org agenda file path is `~/.org`, but
+ you can configure your own default path by setting
+ the environment variable `ORG_AGENDA_FILES`.
