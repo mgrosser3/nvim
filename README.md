@@ -44,6 +44,12 @@ sense to install a package manager like [scoop](https://scoop.sh/).
 For example Treesitter requires a C++ compiler, which we can easily
 install using `scoop install gcc`.
 
+## Setup on Linux
+
+- Use tar-file from githup-repo
+    - apt-get install only provides an old version
+- Install gcc and g++
+
 ## Customize OrgMode
 
  The default org agenda file path is `~/.org`, but
