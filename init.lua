@@ -21,7 +21,7 @@ vim.opt.shiftwidth = 2
 
 -- Windows specific options
 if vim.fn.has('win32') then
-	vim.opt.shell = 'powershell.exe' -- use PowerShell
+	vim.opt.shell = 'pwsh.exe' -- use PowerShell 7.x
 end
 
 --
