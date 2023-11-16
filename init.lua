@@ -19,6 +19,11 @@ vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
 
+-- Windows specific options
+if vim.fn.has('win32') then
+	vim.opt.shell = 'powershell.exe' -- use PowerShell
+end
+
 --
 -- Package Manager lazy.vim
 -- https://github.com/folke/lazy.nvim
