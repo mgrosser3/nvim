@@ -21,7 +21,15 @@ vim.opt.shiftwidth = 2
 
 -- Windows specific options
 if vim.fn.has('win32') then
-	vim.opt.shell = 'pwsh.exe' -- use PowerShell 7.x
+
+	-- Use PowerShell 7.x
+	-- TODO If pwsh not available use powershell.exe
+	vim.opt.shell = 'pwsh.exe'
+	vim.o.shellxquote = ''
+	vim.o.shellcmdflag = '-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command '
+	vim.o.shellquote = ''
+	vim.o.shellpipe = '| Out-File -Encoding UTF8 %s'
+	vim.o.shellredir = '| Out-File -Encoding UTF8 %s'
 end
 
 --
