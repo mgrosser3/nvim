@@ -88,6 +88,10 @@ require("lazy").setup({
 	{'hrsh7th/nvim-cmp'},
 	{'L3MON4D3/LuaSnip'},
 
+	-- Debug Adapter Protocol support
+	{'mfussenegger/nvim-dap'},
+	{'rcarriga/nvim-dap-ui'},
+
 	-- Org Mode
 	{
 		'nvim-orgmode/orgmode',
