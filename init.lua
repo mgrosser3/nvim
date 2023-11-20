@@ -19,6 +19,24 @@ vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
 
+-- Windows specific options
+if vim.fn.has('win32') then
+
+	vim.opt.shell = 'powershell.exe'
+	
+	-- Try to use PowerShell 7.x
+	vim.cmd(":silent !pwsh.exe --version")
+	if vim.v.shell_error == 0 then
+		vim.opt.shell = 'pwsh.exe'
+	end
+
+	vim.o.shellxquote = ''
+	vim.o.shellcmdflag = '-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command '
+	vim.o.shellquote = ''
+	vim.o.shellpipe = '| Out-File -Encoding UTF8 %s'
+	vim.o.shellredir = '| Out-File -Encoding UTF8 %s'
+end
+
 --
 -- Package Manager lazy.vim
 -- https://github.com/folke/lazy.nvim

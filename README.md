@@ -44,6 +44,25 @@ sense to install a package manager like [scoop](https://scoop.sh/).
 For example Treesitter requires a C++ compiler, which we can easily
 install using `scoop install gcc`.
 
+#### PowerShell 7.x
+
+There are two different versions of the PowerShell. For details more
+details see: [Differences between Windows PowerShell 5.1 and PowerShell 7.x]
+(https://learn.microsoft.com/en-us/powershell/scripting/whats-new/differences-from-windows-powershell?view=powershell-7.3)
+
+It is recommended to install it, because the mason plugin requires PowerShell 7.x (pwsh.exe).
+
+Search for the latest version: `winget search Microsoft.PowerShell`
+
+```
+Name               Id                           Version Source
+--------------------------------------------------------------
+PowerShell         Microsoft.PowerShell         7.3.8.0 winget
+PowerShell Preview Microsoft.PowerShell.Preview 7.4.0.6 winget
+```
+
+Install the PowerShell: `winget install --id Microsoft.PowerShell --source winget`
+
 ## Setup on Linux
 
 - Use tar-file from githup-repo
