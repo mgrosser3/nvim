@@ -63,6 +63,12 @@ PowerShell Preview Microsoft.PowerShell.Preview 7.4.0.6 winget
 
 Install the PowerShell: `winget install --id Microsoft.PowerShell --source winget`
 
+## Setup on Linux
+
+- Use tar-file from githup-repo
+    - apt-get install only provides an old version
+- Install gcc and g++
+
 ## Customize OrgMode
 
  The default org agenda file path is `~/.org`, but
