@@ -95,6 +95,7 @@ require("lazy").setup({
 	{'mfussenegger/nvim-dap'},
 	{'rcarriga/nvim-dap-ui'},
 	{'https://github.com/mfussenegger/nvim-dap-python'},
+	{'theHamsta/nvim-dap-virtual-text'},
 
 	-- Org Mode
 	{
