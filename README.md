@@ -9,6 +9,11 @@ scratch because I liked to learn more about ways to customize Neovim. Also, I fe
 need to decide for myself which feature I need and which one I don't. So I see this as a
 way to question my own needs for an IDE.
 
+## Requires
+
+### Font JetBrains Mono
+https://www.jetbrains.com/de-de/lp/mono/
+
 ## Plugins
 
 ### lazy.vim
