@@ -14,6 +14,9 @@ way to question my own needs for an IDE.
 ### Font JetBrains Mono
 https://www.jetbrains.com/de-de/lp/mono/
 
+#### Nerd Font Variant
+https://www.nerdfonts.com/
+
 ## Plugins
 
 ### lazy.vim
