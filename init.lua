@@ -3,6 +3,7 @@
 --
 
 vim.g.mapleader = " "
+vim.o.guifont = "JetBrains Mono:h13"
 
 --
 -- General Key Bindings
