@@ -107,5 +107,10 @@ require("lazy").setup({
 		event = 'VeryLazy'
 	},
 
+	-- ToDo Comments
+	{
+		'folke/todo-comments.nvim',
+		dependencies = {'nvim-lua/plenary.nvim', 'folke/trouble.nvim'},
+	},
 })
 
