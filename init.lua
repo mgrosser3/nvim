@@ -23,12 +23,15 @@ vim.opt.shiftwidth = 2
 -- Windows specific options
 if vim.fn.has('win32') then
 
-	vim.opt.shell = 'powershell.exe'
-	
 	-- Try to use PowerShell 7.x
 	vim.cmd(":silent !pwsh.exe --version")
 	if vim.v.shell_error == 0 then
 		vim.opt.shell = 'pwsh.exe'
+	else
+		vim.opt.shell = 'powershell.exe'
+		-- fix: **error** (netrw) unable to make directory<Lua>
+		-- see: %COMSPEC% is set to cmd.exe
+		vim.g.netrw_localmkdir = vim.opt.shell + " mkdir"
 	end
 
 	vim.o.shellxquote = ''
@@ -36,7 +39,8 @@ if vim.fn.has('win32') then
 	vim.o.shellquote = ''
 	vim.o.shellpipe = '| Out-File -Encoding UTF8 %s'
 	vim.o.shellredir = '| Out-File -Encoding UTF8 %s'
-end
+
+	end 
 
 --
 -- Package Manager lazy.vim
