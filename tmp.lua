@@ -38,10 +38,10 @@ require("lazy").setup({
 	-- Debug Adapter Protocol support
 	--
 	--
-	{'mfussenegger/nvim-dap'},
-	{'rcarriga/nvim-dap-ui'},
-	{'https://github.com/mfussenegger/nvim-dap-python'},
-	{'theHamsta/nvim-dap-virtual-text'},
+	{'mfussenegger/nvim-dap'}, -- [X]
+	{'rcarriga/nvim-dap-ui'}, -- [X]
+	{'mfussenegger/nvim-dap-python'}, -- [X]
+	{'theHamsta/nvim-dap-virtual-text'}, -- [X]
 
 	-- Org Mode
 	{
