@@ -12,7 +12,7 @@ return {
       local actions = require('telescope.actions')
 
       --
-      -- Telescope Setup
+      -- Plugin Setup
       --
 
       telescope.setup({
