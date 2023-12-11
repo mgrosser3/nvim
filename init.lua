@@ -1,50 +1,42 @@
 --
--- General Settings
+-- My most basic configuration
+--
 --
 
+-- The Leader Key!
 vim.g.mapleader = " "
-vim.o.guifont = "JetBrainsMono Nerd Font Mono:h13"
 
---
--- General Key Bindings
---
-
+-- Add keymap to open netrw
 vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
 
---
--- General Options
---
-
+-- Activate relative numbers
 vim.wo.relativenumber = true
+
+-- Tabstop settings
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
 
--- Windows specific options
+--
+-- Windows specific configuration 
+--
+--
+
 if vim.fn.has('win32') then
+	require('windows')
+end 
 
-	-- Try to use PowerShell 7.x
-	vim.cmd(":silent !pwsh.exe --version")
-	if vim.v.shell_error == 0 then
-		vim.opt.shell = 'pwsh.exe'
-	else
-		vim.opt.shell = 'powershell.exe'
-		-- fix: **error** (netrw) unable to make directory<Lua>
-		-- see: %COMSPEC% is set to cmd.exe
-		vim.g.netrw_localmkdir = vim.opt.shell + " mkdir"
-	end
+--
+-- GUI specific configuration
+--
+--
 
-	vim.o.shellxquote = ''
-	vim.o.shellcmdflag = '-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command '
-	vim.o.shellquote = ''
-	vim.o.shellpipe = '| Out-File -Encoding UTF8 %s'
-	vim.o.shellredir = '| Out-File -Encoding UTF8 %s'
-
-	end 
+require('gui')
 
 --
 -- Package Manager lazy.vim
 -- https://github.com/folke/lazy.nvim
+--
 --
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -59,5 +51,4 @@ if not vim.loop.fs_stat(lazypath) then
 	})
 end
 vim.opt.rtp:prepend(lazypath)
-
 require("lazy").setup('plugins')
