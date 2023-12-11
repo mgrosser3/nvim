@@ -1,11 +1,11 @@
 -- All Windows-specific configurations can be found in this file.
 --
---		It is recommended to use the lua script only
---		if it is a Windows system.
+--	It is recommended to use the lua script only
+--	if it is a Windows system.
 --
---			if vim.fn.has('win32') then
---				require("windows")
---			end
+--	if vim.fn.has('win32') then
+--		require("windows")
+--	end
 
 -- We want to use Powershell 7.x (pwsh.exe)
 -- if it is available!
