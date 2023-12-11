@@ -1,7 +1,6 @@
 --
 -- My most basic configuration
 --
---
 
 -- The Leader Key!
 vim.g.mapleader = " "
@@ -20,7 +19,6 @@ vim.opt.shiftwidth = 2
 --
 -- Windows specific configuration 
 --
---
 
 if vim.fn.has('win32') then
 	require('windows')
@@ -29,14 +27,12 @@ end
 --
 -- GUI specific configuration
 --
---
 
 require('gui')
 
 --
 -- Package Manager lazy.vim
 -- https://github.com/folke/lazy.nvim
---
 --
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
