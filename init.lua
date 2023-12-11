@@ -12,9 +12,10 @@ vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
 vim.wo.relativenumber = true
 
 -- Tabstop settings
-vim.opt.tabstop = 2
-vim.opt.softtabstop = 2
-vim.opt.shiftwidth = 2
+vim.opt.tabstop = 2       -- Width of tab character
+vim.opt.softtabstop = 2   -- Amount of white space to be added
+vim.opt.shiftwidth = 2    -- Amount of white space to add in normal mode
+vim.opt.expandtab = true  -- use spaces instead of tabs
 
 --
 -- Windows specific configuration 
