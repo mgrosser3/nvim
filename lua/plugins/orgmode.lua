@@ -18,20 +18,15 @@ return {
 				org_default_path = '~/.org'
 			end
 
-			-- Setup orgmode
+      --
+			-- Plugin Setup
+      --
+
 			require('orgmode').setup({
 				org_agenda_files = org_default_path .. '/**/*',
 				org_default_notes_file = org_default_path .. '/refile.org'
 			})
 
-			-- Setup Tree-Sitter
-			require('nvim-treesitter.configs').setup({
-				highlight = {
-					enable = true,
-					additional_vim_regex_highlighting = { 'org' },
-				},
-				ensure_installed = { 'org' },
-			})
 		end
 	}
 
