@@ -17,6 +17,9 @@ vim.opt.softtabstop = 2  -- amount of white space to be added
 vim.opt.shiftwidth = 2   -- amount of white space to add in normal mode
 vim.opt.expandtab = true -- use spaces instead of tabs
 
+-- Remap ctrl-c to ESC
+vim.keymap.set("i", "<C-c>", "<ESC>")
+
 --
 -- Windows specific configuration
 --
