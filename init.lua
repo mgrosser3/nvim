@@ -20,6 +20,10 @@ vim.opt.expandtab = true -- use spaces instead of tabs
 -- Remap ctrl-c to ESC
 vim.keymap.set("i", "<C-c>", "<ESC>")
 
+-- Move highlighted parts
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
 --
 -- Windows specific configuration
 --
