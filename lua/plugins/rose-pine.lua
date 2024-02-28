@@ -6,7 +6,7 @@ return {
 
 		config = function()
 			require('rose-pine').setup({
-		
+
 				--- @usage 'auto'|'main'|'moon'|'dawn'
 				variant = 'auto',
 				--- @usage 'main'|'moon'|'dawn'
@@ -49,7 +49,7 @@ return {
 				-- Change specific vim highlight groups
 				-- https://github.com/rose-pine/neovim/wiki/Recipes
 				highlight_groups = {
-					ColorColumn = { bg = 'rose' },
+					ColorColumn = { bg = 'highlight_low' },
 
 					-- Blend colours against the "base" background
 					CursorLine = { bg = 'foam', blend = 10 },

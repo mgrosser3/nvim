@@ -29,7 +29,7 @@ vim.opt.hlsearch = false -- disable highlighting
 
 -- Appearance
 vim.opt.relativenumber = true -- enable relative line numbers
-vim.opt.colorcolumn = '100' -- highlighted line length
+vim.opt.colorcolumn = '120' -- highlighted line length
 vim.opt.signcolumn = "yes" -- draw the signcolumn (default = "auto")
 vim.opt.cmdheight = 1 -- number of screen lines to use for the command-line
 vim.opt.scrolloff = 10 -- minimal number of screen lines to keep above and below the cursor
