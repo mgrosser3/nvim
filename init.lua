@@ -4,6 +4,7 @@
 
 -- The Leader Key!
 vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 -- Add keymap to open netrw
 vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
