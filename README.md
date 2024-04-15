@@ -17,6 +17,9 @@ https://www.jetbrains.com/de-de/lp/mono/
 #### Nerd Font Variant
 https://www.nerdfonts.com/
 
+### Node Package Manager
+You need it to install vim-language-server, see therefor :healthcheck mason.
+
 ## Plugins
 
 ### lazy.vim
