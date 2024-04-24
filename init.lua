@@ -1,23 +1,25 @@
 --
--- Global Editor Variables 
---
+-- Global Variables 
+-- :help global-variables
+-- 
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 
+
 --
--- NeoVim Options
+-- Neovim Options 
 -- :help options
 --
 
--- Tabstop Settings
+-- Tabstop
 vim.opt.tabstop = 2 -- width of tab character
 vim.opt.softtabstop = 2 -- amount of white space to be added
 vim.opt.shiftwidth = 2 -- amount of white space to add in normal mode
 vim.opt.expandtab = true -- use spaces instead of tabs
 
--- Indentation Settings
+-- Indentation
 vim.opt.smartindent = true -- autoindenting when starting a new line
 vim.opt.wrap = false -- disable line wrapping
 
@@ -51,35 +53,41 @@ vim.opt.clipboard:append("unnamedplus")
 vim.opt.modifiable = true -- buffers per default modifiable
 vim.opt.encoding = "UTF-8"
 
+
+
 --
--- NeoVim Keymappings
+-- Key Bindings 
 --
 
--- Open file browser netrw
+-- File browser 'netrw'
 vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
 
--- Move highlighted parts
+-- Move selected lines
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv") -- move up
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv") -- move down
 
 -- Remaps
-vim.keymap.set("i", "<C-c>", "<ESC>")
+vim.keymap.set("i", "<C-c>", "<ESC>") -- CTRL-C -> ESC
 
 
+
+-- 
 --
 -- Windows specific configuration
 --
 
 if vim.fn.has('win32') then
-  require('windows')
+  pcall(require, 'windows')
 end
+
 
 
 --
 -- GUI specific configuration
 --
 
-require('gui')
+pcall(require, 'gui')
+
 
 
 --
@@ -101,5 +109,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-  { import = "plugins" },
+  { import = "plugins" },     -- plugins that you definitely need
+  { import = "plugins/org" }, -- plugins for organizational tasks
+  { import = "plugins/ide" }, -- plugins for programming / coding
 })
