@@ -40,9 +40,6 @@ https://github.com/nvim-treesitter/nvim-treesitter
 ### LSP Zero
 https://github.com/VonHeikemen/lsp-zero.nvim
 
-### Org Mode
-https://github.com/nvim-orgmode/orgmode
-
 ## Setup on Windows
 
 I personally prefer a config folder in my home direcotry on Windows.
