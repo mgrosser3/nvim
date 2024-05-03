@@ -76,9 +76,3 @@ Install the PowerShell: `winget install --id Microsoft.PowerShell --source winge
 - Use tar-file from githup-repo
     - apt-get install only provides an old version
 - Install gcc and g++
-
-## Customize OrgMode
-
- The default org agenda file path is `~/.org`, but
- you can configure your own default path by setting
- the environment variable `ORG_AGENDA_FILES`.
