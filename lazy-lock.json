@@ -18,7 +18,6 @@
   "nvim-notify": { "branch": "master", "commit": "5371f4bfc1f6d3adf4fe9d62cd3a9d44356bfd15" },
   "nvim-treesitter": { "branch": "master", "commit": "cbf9090a4c715fa9eb38be71062bf19194b45bd2" },
   "nvim-web-devicons": { "branch": "master", "commit": "794bba734ec95eaff9bb82fbd112473be2087283" },
-  "orgmode": { "branch": "master", "commit": "d4cc3210f235a845de8d372d02482163d31ded93" },
   "plenary.nvim": { "branch": "master", "commit": "08e301982b9a057110ede7a735dd1b5285eb341f" },
   "rose-pine": { "branch": "main", "commit": "17b466e79479758b332a3cac12544a3ad2be6241" },
   "telescope.nvim": { "branch": "0.1.x", "commit": "6312868392331c9c0f22725041f1ec2bef57c751" },
