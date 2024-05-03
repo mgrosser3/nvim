@@ -74,6 +74,7 @@ vim.keymap.set("i", "<C-c>", "<ESC>") -- CTRL-C -> ESC
 -- 
 --
 -- Windows specific configuration
+-- ./lua/windows.lua
 --
 
 if vim.fn.has('win32') then
@@ -84,6 +85,7 @@ end
 
 --
 -- GUI specific configuration
+-- ./lua/gui.lua
 --
 
 pcall(require, 'gui')
@@ -106,10 +108,9 @@ if not vim.loop.fs_stat(lazypath) then
     lazypath,
   })
 end
+
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup({
-  { import = "plugins" },     -- plugins that you definitely need
-  { import = "plugins/org" }, -- plugins for organizational tasks
-  { import = "plugins/ide" }, -- plugins for programming / coding
-})
+if vim.fn.isdirectory(vim.fn.stdpath("config") .. "/lua/plugins") == 1 then
+  require("lazy").setup({{ import = "plugins" }})
+end
