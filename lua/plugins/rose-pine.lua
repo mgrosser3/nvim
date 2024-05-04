@@ -3,7 +3,6 @@ return {
 	-- Color Scheme Rose Pine
 	{
 		'rose-pine/neovim', name = 'rose-pine',
-
 		config = function()
 			require('rose-pine').setup({
 
@@ -64,7 +63,7 @@ return {
 			})
 
 			-- Set colorscheme after options
-			vim.cmd('colorscheme rose-pine')
+			-- vim.cmd('colorscheme rose-pine')
 
 		end, -- config = function()
 
