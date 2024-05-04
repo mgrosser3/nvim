@@ -2,8 +2,12 @@ return {
   {
     "ibhagwan/fzf-lua",
     -- commit = "3da9ad3",
+    keys = {
+      { "gt", "<cmd>:lua require('fzf-lua').lsp_typedefs({ jump_to_single_result = true })<CR>", desc = "Type Definitions" },
+      { "gr", "<cmd>:lua require('fzf-lua').lsp_references({ jump_to_single_result = true })<CR>", desc = "References" },
+      { "gd", "<cmd>:lua require('fzf-lua').lsp_definitions({ jump_to_single_result = true })<CR>", desc = "Definitions" },
+    },
     config = function()
-      local actions = require("fzf-lua.actions")
       require("fzf-lua").setup({
         "telescope",
         winopts = {

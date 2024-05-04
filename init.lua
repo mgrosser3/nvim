@@ -121,6 +121,8 @@ vim.keymap.set("n", "<C-tab>", ":e#<CR>")
 
 vim.keymap.set("i", "<C-Enter>", "<C-o>O")
 
+vim.keymap.set("n", "<A-u>", "<cmd>noh<cr>")
+
 --
 -- Windows specific configuration
 --
