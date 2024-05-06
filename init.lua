@@ -5,48 +5,48 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-
 --
 -- NeoVim Options
 -- :help options
 --
 
 -- Tabstop Settings
-vim.opt.tabstop = 2      -- width of tab character
-vim.opt.softtabstop = 2  -- amount of white space to be added
-vim.opt.shiftwidth = 2   -- amount of white space to add in normal mode
+vim.opt.tabstop = 2 -- width of tab character
+vim.opt.softtabstop = 2 -- amount of white space to be added
+vim.opt.shiftwidth = 2 -- amount of white space to add in normal mode
 vim.opt.expandtab = true -- use spaces instead of tabs
 
 -- Indentation Settings
 vim.opt.smartindent = true -- autoindenting when starting a new line
-vim.opt.wrap = false       -- disable line wrapping
+vim.opt.wrap = false -- disable line wrapping
 
 -- Search
-vim.opt.incsearch = true  -- enable incremental search
+vim.opt.incsearch = true -- enable incremental search
 vim.opt.ignorecase = true -- ignore case in search pattern
-vim.opt.smartcase = true  -- case sensitive, if search pattern contains upper case characters
+vim.opt.smartcase = true -- case sensitive, if search pattern contains upper case characters
 vim.opt.hlsearch = true -- disable highlighting
 
 -- Appearance
 vim.opt.relativenumber = true -- enable relative line numbers
-vim.opt.colorcolumn = '120'   -- highlighted line length
-vim.opt.signcolumn = "yes"    -- draw the signcolumn (default = "auto")
-vim.opt.cmdheight = 1         -- number of screen lines to use for the command-line
-vim.opt.scrolloff = 10        -- minimal number of screen lines to keep above and below the cursor
+vim.cmd([[set nu]]) -- show real line number for current line
+vim.opt.colorcolumn = "120" -- highlighted line length
+vim.opt.signcolumn = "yes" -- draw the signcolumn (default = "auto")
+vim.opt.cmdheight = 1 -- number of screen lines to use for the command-line
+vim.opt.scrolloff = 10 -- minimal number of screen lines to keep above and below the cursor
 vim.opt.completeopt = "menuone,noinsert,noselect"
 
 -- Behaviour
 vim.opt.errorbells = false -- switch off noise in case of errors
-vim.opt.swapfile = false   -- disable swapfiles for buffers
-vim.opt.backup = false     -- disable backup file
-vim.opt.undofile = true    -- enable undo files
+vim.opt.swapfile = false -- disable swapfiles for buffers
+vim.opt.backup = false -- disable backup file
+vim.opt.undofile = true -- enable undo files
 vim.opt.undodir = vim.fn.expand("~/.nvim/undo")
 vim.opt.backspace = "indent,eol,start"
 vim.opt.splitright = true
 vim.opt.splitbelow = true
-vim.opt.autochdir = true  -- don't change the working directory automatically
+vim.opt.autochdir = true -- don't change the working directory automatically
 vim.opt.iskeyword:append("-")
-vim.opt.mouse:append('a') -- enable mouse support for all modes
+vim.opt.mouse:append("a") -- enable mouse support for all modes
 vim.opt.clipboard = "unnamedplus"
 vim.opt.modifiable = true -- buffers per default modifiable
 vim.opt.encoding = "UTF-8"
@@ -65,7 +65,6 @@ vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv") -- move down
 -- Remaps
 vim.keymap.set("i", "<C-c>", "<ESC>")
 
-
 vim.keymap.set("i", "<C-BS>", "<C-W>")
 
 vim.keymap.set("n", "<C-1>", "<C-w>o")
@@ -78,7 +77,6 @@ vim.keymap.set("v", "<C-.>", "<cmd>CodeActionMenu<CR>")
 
 vim.keymap.set("n", "<M-C-9>", "<cmd>Telescope git_status theme=ivy<CR>")
 vim.keymap.set("n", "<C-0>", "<cmd>Telescope projects<CR>")
-
 
 vim.keymap.set("n", "<M-C-S-F>", ":lua require'fzf-lua'.live_grep({ cwd=\"~/Software\" })<CR>")
 vim.keymap.set("n", "<M-F>", "<cmd>FzfLua files cwd=~/<CR>")
@@ -127,17 +125,15 @@ vim.keymap.set("n", "<A-u>", "<cmd>noh<cr>")
 -- Windows specific configuration
 --
 
-if vim.fn.has('win32') then
-  require('windows')
+if vim.fn.has("win32") then
+	require("windows")
 end
-
 
 --
 -- GUI specific configuration
 --
 
-require('gui')
-
+require("gui")
 
 --
 -- Package Manager lazy.vim
@@ -146,17 +142,17 @@ require('gui')
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable", -- latest stable release
+		lazypath,
+	})
 end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-  { import = "plugins" },
+	{ import = "plugins" },
 })
