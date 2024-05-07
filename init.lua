@@ -49,7 +49,7 @@ vim.opt.splitright = true
 vim.opt.splitbelow = true
 vim.opt.autochdir = true -- change current working directory whenever you open a file 
 vim.opt.iskeyword:append("-")
-vim.opt.mouse:append('a') -- enable mouse support for all modes
+vim.opt.mouse:append("a") -- enable mouse support for all modes
 vim.opt.clipboard:append("unnamedplus")
 vim.opt.modifiable = true -- buffers per default modifiable
 vim.opt.encoding = "UTF-8"
@@ -60,10 +60,10 @@ vim.opt.encoding = "UTF-8"
 -- Key Bindings 
 --
 
--- File browser 'netrw'
+-- Open file browser netrw
 vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
 
--- Move selected lines
+-- Move highlighted parts
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv") -- move up
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv") -- move down
 
