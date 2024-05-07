@@ -78,8 +78,10 @@ vim.keymap.set("i", "<C-c>", "<ESC>") -- CTRL-C -> ESC
 -- ./lua/windows.lua
 --
 
-if vim.fn.has('win32') then
-  pcall(require, 'windows')
+if vim.loop.os_uname().sysname == "Windows_NT" then
+  pcall(require, "windows")
+elseif vim.loop.os_uname().sysname == "Linux" then
+  pcall(require, "linux")
 end
 
 
