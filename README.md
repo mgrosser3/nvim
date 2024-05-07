@@ -40,6 +40,9 @@ https://github.com/nvim-treesitter/nvim-treesitter
 ### LSP Zero
 https://github.com/VonHeikemen/lsp-zero.nvim
 
+### Org Mode
+https://github.com/nvim-orgmode/orgmode
+
 ## Setup on Windows
 
 I personally prefer a config folder in my home direcotry on Windows.
@@ -76,3 +79,9 @@ Install the PowerShell: `winget install --id Microsoft.PowerShell --source winge
 - Use tar-file from githup-repo
     - apt-get install only provides an old version
 - Install gcc and g++
+
+## Customize OrgMode
+
+ The default org agenda file path is `~/.org`, but
+ you can configure your own default path by setting
+ the environment variable `ORG_AGENDA_FILES`.

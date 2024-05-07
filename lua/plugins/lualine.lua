@@ -59,7 +59,7 @@ return {
 			  options = {
 
 			    icons_enabled = false,
-			    theme = rose_pine_theme,
+			    -- theme = rose_pine_theme,
 			    component_separators = { left = '|', right = '|'},
 			    section_separators = { left = '', right = ''},
 			    disabled_filetypes = {
