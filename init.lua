@@ -30,6 +30,7 @@ vim.opt.smartcase = true -- case sensitive, if search pattern contains upper cas
 vim.opt.hlsearch = false -- disable highlighting
 
 -- Appearance
+vim.opt.number = true -- show real line number for current line
 vim.opt.relativenumber = true -- enable relative line numbers
 vim.opt.colorcolumn = '120' -- highlighted line length
 vim.opt.signcolumn = "yes" -- draw the signcolumn (default = "auto")
