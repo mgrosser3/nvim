@@ -16,7 +16,7 @@ return {
 
 			wk.register({
 				["c"] = { "<cmd>BufferClose!<CR>", "Close Buffer" },
-				["e"] = { "<cmd>NvimTreeToggle<CR>", "Explorer" },
+				["e"] = { "<cmd>Oil<CR>", "Explorer" },
 				["b"] = { "<cmd>Telescope buffers<CR>", "Buffers" },
 				["f"] = { "<cmd>Telescope git_files<CR>", "Git Files" },
 				["o"] = { "<cmd>Telescope oldfiles<CR>", "Old Files" },

@@ -28,7 +28,7 @@ vim.opt.hlsearch = true -- disable highlighting
 
 -- Appearance
 vim.opt.relativenumber = true -- enable relative line numbers
-vim.cmd([[set nu]]) -- show real line number for current line
+vim.opt.number = true -- enable line numbers
 vim.opt.colorcolumn = "120" -- highlighted line length
 vim.opt.signcolumn = "yes" -- draw the signcolumn (default = "auto")
 vim.opt.cmdheight = 1 -- number of screen lines to use for the command-line
@@ -126,7 +126,7 @@ vim.keymap.set("n", "<A-u>", "<cmd>noh<cr>")
 --
 
 if vim.fn.has("win32") then
-	require("windows")
+	pcall(require, "windows")
 end
 
 --
