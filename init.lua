@@ -125,7 +125,7 @@ vim.keymap.set("n", "<A-u>", "<cmd>noh<cr>")
 -- Windows specific configuration
 --
 
-if vim.fn.has("win32") then
+if vim.loop.os_uname().sysname == "Windows" then
 	pcall(require, "windows")
 end
 
