@@ -31,6 +31,12 @@ return {
 				"gd",
 				"<cmd>:lua require('fzf-lua').lsp_definitions({ jump_to_single_result = true })<CR>"
 			)
+
+			vim.keymap.set(
+				"n",
+				"ſ",
+				"<cmd>:lua require('fzf-lua').lsp_live_workspace_symbols({ jump_to_single_result = true })<CR>"
+			)
 		end,
 	},
 }

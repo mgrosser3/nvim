@@ -32,7 +32,11 @@ return {
 				["t"] = { '<cmd>:lua require("fzf-lua").lsp_typedefs({ jump_to_single_result = true })<CR>', "Type" },
 				["R"] = { "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename" },
 				["s"] = { "<cmd>w<CR>", "Save Buffer" },
-				["S"] = { "<cmd>wall<CR>", "Save All" },
+				-- ["S"] = { "<cmd>wall<CR>", "Save All" },
+				S = {
+					"<cmd>FzfLua lsp_live_workspace_symbols<cr>",
+					"Workspace Symbols",
+				},
 
 				["i"] = { "<cmd>TypescriptAddMissingImports<CR>", "Add Missing Imports" },
 

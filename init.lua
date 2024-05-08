@@ -34,6 +34,7 @@ vim.opt.signcolumn = "yes" -- draw the signcolumn (default = "auto")
 vim.opt.cmdheight = 1 -- number of screen lines to use for the command-line
 vim.opt.scrolloff = 10 -- minimal number of screen lines to keep above and below the cursor
 vim.opt.completeopt = "menuone,noinsert,noselect"
+vim.cmd([[set showtabline=0]]) -- always show tabline
 
 -- Behaviour
 vim.opt.errorbells = false -- switch off noise in case of errors
