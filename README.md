@@ -17,16 +17,26 @@ you can find a lot of interessting things and inspirations.
 ### Install Neovim
 
 If you have not yet installed Neovim, this is the first step. You can find more information
-about this at [https://github.com/neovim/neovim/blob/master/INSTALL.md]
-(https://github.com/neovim/neovim/blob/master/INSTALL.md).
+about this at https://github.com/neovim/neovim/blob/master/INSTALL.md.
 
 ### Clone the Repostory 
 
 You have to clone the repository to a specific location, because Neovim expects the
 configuration in the following directories:
 
-Linux: `~/.config/nvim`
-Windows: `~/AppData/Local/nvim`
+- Linux: `~/.config/nvim`
+- Windows: `~/AppData/Local/nvim`
+
+To use the configuration, the repository only needs to be cloned into the configuration folder.
+
+#### Clone on Linux
+```shell
+git clone https://github.com/mgrosser3/nvim.git ~/.config/nvim
+```
+#### Clone on Windows
+```shell
+git clone https://github.com/mgrosser3/nvim.git ~/AppData/Local/nvim
+```
 
 > [!TIP]
 > You can also set the environment variable `XDG_CONFIG_HOME` to specify the storage location
@@ -35,19 +45,6 @@ Windows: `~/AppData/Local/nvim`
 > I personally prefer a config folder in my home direcotry on Windows
 > (`XDG_CONFIG_HOME = $env:USERPROFILE\.config`). Because I don't like looking for things in
 > the hidden Windows AppData folder. I would like to have a similar experiance as on Linux.
-
-To use the configuration, the repository only needs to be cloned into the configuration folder.
-
-**Linux**
-
-```shell
-git clone https://github.com/mgrosser3/nvim.git ~/.config/nvim
-```
-**Windows**
-
-```shell
-git clone https://github.com/mgrosser3/nvim.git ~/AppData/Local/nvim
-```
 
 ## Requires
 
