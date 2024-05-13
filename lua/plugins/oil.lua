@@ -19,6 +19,7 @@ return {
 				},
 				keymaps = {
 					["q"] = "actions.close",
+					["<C-s>"] = false,
 				},
 			})
 		end,

@@ -34,7 +34,8 @@ vim.opt.signcolumn = "yes" -- draw the signcolumn (default = "auto")
 vim.opt.cmdheight = 1 -- number of screen lines to use for the command-line
 vim.opt.scrolloff = 10 -- minimal number of screen lines to keep above and below the cursor
 vim.opt.completeopt = "menuone,noinsert,noselect"
-vim.cmd([[set showtabline=0]]) -- always show tabline
+vim.opt.showtabline = 0 -- never show tabline
+vim.opt.pumheight = 10 -- limit completion items
 
 -- Behaviour
 vim.opt.errorbells = false -- switch off noise in case of errors
@@ -121,6 +122,10 @@ vim.keymap.set("n", "<C-tab>", ":e#<CR>")
 vim.keymap.set("i", "<C-Enter>", "<C-o>O")
 
 vim.keymap.set("n", "<A-u>", "<cmd>noh<cr>")
+
+vim.diagnostic.config({
+	virtual_text = false,
+})
 
 --
 -- Windows specific configuration
