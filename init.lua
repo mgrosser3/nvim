@@ -61,7 +61,7 @@ vim.opt.encoding = "UTF-8"
 --
 
 -- Open file browser netrw
-vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
+vim.keymap.set("n", "<leader>e", vim.cmd.Ex, {desc="netrw"})
 
 -- Move highlighted parts
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv") -- move up
