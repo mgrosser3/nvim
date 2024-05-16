@@ -40,6 +40,9 @@ https://github.com/nvim-treesitter/nvim-treesitter
 ### LSP Zero
 https://github.com/VonHeikemen/lsp-zero.nvim
 
+### which-key
+https://github.com/folke/which-key.nvim
+
 ## Setup on Windows
 
 I personally prefer a config folder in my home direcotry on Windows.
