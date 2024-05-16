@@ -24,7 +24,7 @@ return {
   {
     'rcarriga/nvim-dap-ui',
 
-    dependencies = {"mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"},
+    dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
 
     config = function()
       local dapui = require('dapui')
@@ -86,13 +86,13 @@ return {
   --
 
   {
-		'mfussenegger/nvim-dap-python',
+    'mfussenegger/nvim-dap-python',
 
-		config = function()
-			-- HACK: Hard coded python interpreter!
-			-- INFO: .setup(os.getenv("VIRTUAL_ENV") .. "/bin/python")
-			require('dap-python').setup('~/Entwicklung/.venv/Scripts/python.exe')
-		end
+    config = function()
+      -- HACK: Hard coded python interpreter!
+      -- INFO: .setup(os.getenv("VIRTUAL_ENV") .. "/bin/python")
+      require('dap-python').setup('~/Entwicklung/.venv/Scripts/python.exe')
+    end
 
-	}
+  }
 }

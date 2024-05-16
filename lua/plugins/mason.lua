@@ -11,7 +11,6 @@ return {
     priority = 100, -- make sure to load this before dependent plugins
 
     config = function()
-
       --
       -- Plugin Setup
       --
@@ -25,7 +24,6 @@ return {
           }
         }
       })
-
     end
   }
 
