@@ -80,17 +80,6 @@ vim.keymap.set("v", "<C-.>", "<cmd>CodeActionMenu<CR>")
 vim.keymap.set("n", "<M-C-9>", "<cmd>Telescope git_status theme=ivy<CR>")
 vim.keymap.set("n", "<C-0>", "<cmd>Telescope projects<CR>")
 
-vim.keymap.set("n", "<M-C-S-F>", ":lua require'fzf-lua'.live_grep({ cwd=\"~/Software\" })<CR>")
-vim.keymap.set("n", "<M-F>", "<cmd>FzfLua files cwd=~/<CR>")
-vim.keymap.set("n", "<M-f>", "<cmd>FzfLua files cwd=~/Software/<CR>")
-vim.keymap.set("n", "<M-C-F>", "<cmd>FzfLua blines<CR>")
-vim.keymap.set("n", "<C-4>", "<cmd>FzfLua live_grep_native<CR>")
-vim.keymap.set("n", "<C-7>", "<cmd>FzfLua oldfiles<CR>")
-vim.keymap.set("n", "<C-8>", "<cmd>FzfLua buffers<CR>")
-vim.keymap.set("n", "<C-9>", "<cmd>FzfLua git_files<CR>")
-vim.keymap.set("n", "<C-ß>", "<cmd>FzfLua lsp_live_workspace_symbols<CR>")
-vim.keymap.set("n", "<M-o>", "<cmd>FzfLua jumplist<CR>")
-
 vim.keymap.set("n", "<C-f>", "/")
 
 vim.keymap.set("n", "<A-j>", "}")

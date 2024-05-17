@@ -37,6 +37,18 @@ return {
 				"ſ",
 				"<cmd>:lua require('fzf-lua').lsp_live_workspace_symbols({ jump_to_single_result = true })<CR>"
 			)
+
+			vim.keymap.set("n", "<M-C-S-F>", ":lua require'fzf-lua'.live_grep({ cwd=\"~/Software\" })<CR>")
+			vim.keymap.set("n", "<M-F>", "<cmd>FzfLua files cwd=~/<CR>")
+			vim.keymap.set("n", "<M-f>", "<cmd>FzfLua files cwd=~/Software/<CR>")
+			vim.keymap.set("n", "<M-C-F>", "<cmd>FzfLua blines<CR>")
+			vim.keymap.set("n", "<C-4>", "<cmd>FzfLua live_grep_native<CR>")
+			vim.keymap.set("n", "đ", "<cmd>FzfLua live_grep_native<CR>")
+			vim.keymap.set("n", "<C-7>", "<cmd>FzfLua oldfiles<CR>")
+			vim.keymap.set("n", "<C-8>", "<cmd>FzfLua buffers<CR>")
+			vim.keymap.set("n", "<C-9>", "<cmd>FzfLua git_files<CR>")
+			vim.keymap.set("n", "<C-ß>", "<cmd>FzfLua lsp_live_workspace_symbols<CR>")
+			vim.keymap.set("n", "<M-o>", "<cmd>FzfLua jumplist<CR>")
 		end,
 	},
 }
