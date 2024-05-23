@@ -14,21 +14,37 @@ return {
 
       -- https://github.com/L3MON4D3/LuaSnip
       'L3MON4D3/LuaSnip',
+
+      -- https://github.com/hrsh7th/cmp-buffer
+      'hrsh7th/cmp-buffer',
+
+      -- https://github.com/hrsh7th/cmp-path
+      'hrsh7th/cmp-path',
+
+      -- https://github.com/hrsh7th/cmp-cmdline
+      'hrsh7th/cmp-cmdline',
+
     },
 
     config = function()
       local cmp = require('cmp')
       cmp.setup({
+
         sources = {
           { name = 'nvim_lsp' },
           { name = 'nvim_lua' },
           { name = 'luasnip' },
+          { name = 'buffer' },
+          { name = 'path' },
+          { name = 'cmdline' },
         },
+
         mapping = {
           ['<CR>'] = cmp.mapping.confirm({ select = true }),
           ['<ESC>'] = cmp.mapping.abort(),
           ['<C-k>'] = cmp.mapping.select_prev_item({ behavior = 'select' }),
           ['<C-j>'] = cmp.mapping.select_next_item({ behavior = 'select' }),
+
           ['<C-p>'] = cmp.mapping(function()
             if cmp.visible() then
               cmp.select_prev_item({ behavior = 'insert' })
@@ -36,6 +52,7 @@ return {
               cmp.complete()
             end
           end),
+
           ['<C-n>'] = cmp.mapping(function()
             if cmp.visible() then
               cmp.select_next_item({ behavior = 'insert' })
@@ -43,13 +60,19 @@ return {
               cmp.complete()
             end
           end),
+
+          ["<C-u>"] = require("cmp").mapping.scroll_docs(-4),
+          ["<C-d>"] = require("cmp").mapping.scroll_docs(4),
         },
+
         snippet = {
           expand = function(args)
             require('luasnip').lsp_expand(args.body)
           end,
         },
+
         formatting = {
+
           -- changing the order of fields so the icon is the first
           fields = { 'abbr', 'kind', 'menu' },
 
