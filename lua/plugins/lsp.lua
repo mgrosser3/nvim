@@ -78,12 +78,45 @@ return {
 
 			-- Setup mason-lspconfig
 			require("mason-lspconfig").setup({
-				ensure_installed = { "vimls", "lua_ls" },
+				ensure_installed = { "vimls", "lua_ls", "tsserver" },
 				handlers = {
 					lsp_zero.default_setup,
+					tsserver = function()
+						local lspconfig = require("lspconfig")
+
+						lspconfig.tsserver.setup({
+							settings = {
+								typescript = {
+									inlayHints = {
+										includeInlayParameterNameHints = "all",
+										includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+										includeInlayFunctionParameterTypeHints = true,
+										includeInlayVariableTypeHints = true,
+										includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+										includeInlayPropertyDeclarationTypeHints = true,
+										includeInlayFunctionLikeReturnTypeHints = true,
+										includeInlayEnumMemberValueHints = true,
+									},
+								},
+								javascript = {
+									inlayHints = {
+										includeInlayParameterNameHints = "all",
+										includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+										includeInlayFunctionParameterTypeHints = true,
+										includeInlayVariableTypeHints = true,
+										includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+										includeInlayPropertyDeclarationTypeHints = true,
+										includeInlayFunctionLikeReturnTypeHints = true,
+										includeInlayEnumMemberValueHints = true,
+									},
+								},
+							},
+						})
+					end,
 					lua_ls = function()
 						local lua_opts = lsp_zero.nvim_lua_ls()
-						require("lspconfig").lua_ls.setup(lua_opts)
+						local lspconfig = require("lspconfig")
+						lspconfig.lua_ls.setup(lua_opts)
 					end,
 				},
 			})

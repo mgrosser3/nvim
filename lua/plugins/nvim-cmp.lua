@@ -14,25 +14,25 @@ return {
 
 			cmp.setup({
 				completion = {
-					completeopt = "menu,menuone,insert",
+					completeopt = "menu,menuone,noinsert",
 				},
 				mapping = {
-					["<C-u>"] = require("cmp").mapping.scroll_docs(-4),
-					["<C-d>"] = require("cmp").mapping.scroll_docs(4),
-					["<C-j>"] = require("cmp").mapping.select_next_item(),
-					["<C-k>"] = require("cmp").mapping.select_prev_item(),
-					["<C-Space>"] = require("cmp").mapping.complete(),
-					["<C-e>"] = require("cmp").mapping.close(),
-					["<CR>"] = require("cmp").mapping.confirm({
-						behavior = require("cmp").ConfirmBehavior.Insert,
-						select = true,
-					}),
+					["<C-u>"] = cmp.mapping.scroll_docs(-4),
+					["<C-d>"] = cmp.mapping.scroll_docs(4),
+					["<C-j>"] = cmp.mapping.select_next_item(),
+					["<C-k>"] = cmp.mapping.select_prev_item(),
+					["<C-Space>"] = cmp.mapping.complete(),
+					["<C-e>"] = cmp.mapping.close(),
+					["<CR>"] = cmp.mapping(
+						cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Insert }),
+						{ "i", "c" }
+					),
 				},
 				sources = {
 					{
 						name = "nvim_lsp",
 						entry_filter = function(entry, ctx)
-							return require("cmp").lsp.CompletionItemKind.Text ~= entry:get_kind()
+							return cmp.lsp.CompletionItemKind.Text ~= entry:get_kind()
 						end,
 					},
 					{ name = "buffer" },
@@ -53,8 +53,11 @@ return {
 			-- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
 			cmp.setup.cmdline({ "/", "?" }, {
 				mapping = {
-					["<CR>"] = cmp.mapping.confirm({ select = true }),
-					["<c-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
+					["<CR>"] = cmp.mapping(
+						cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Insert }),
+						{ "i", "c" }
+					),
+					["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
 					["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
 				},
 				sources = {
@@ -65,7 +68,10 @@ return {
 			-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
 			cmp.setup.cmdline(":", {
 				mapping = {
-					["<CR>"] = cmp.mapping.confirm({ select = true }),
+					["<CR>"] = cmp.mapping(
+						cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Insert }),
+						{ "i", "c" }
+					),
 					["<c-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
 					["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
 				},
