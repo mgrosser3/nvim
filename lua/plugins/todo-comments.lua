@@ -8,7 +8,19 @@ return {
   },
 
   config = function()
-    require('todo-comments').setup {
+    local todo_comments = require('todo-comments')
+
+    --
+    -- Key Bindings
+    --
+
+    vim.keymap.set("n", "<leader>ft", ":TodoTelescope<CR>", { desc = "TODO comments" })
+
+    --
+    -- Plugin Setup
+    --
+
+    todo_comments.setup {
       signs = true,      -- show icons in the signs column
       sign_priority = 8, -- sign priority
       -- keywords recognized as todo comments
