@@ -26,9 +26,15 @@ return {
 				"gr",
 				"<cmd>:lua require('fzf-lua').lsp_references({ jump_to_single_result = true })<CR>"
 			)
+
 			vim.keymap.set(
 				"n",
 				"gd",
+				"<cmd>:lua require('fzf-lua').lsp_definitions({ jump_to_single_result = true })<CR>"
+			)
+			vim.keymap.set(
+				"n",
+				"ð",
 				"<cmd>:lua require('fzf-lua').lsp_definitions({ jump_to_single_result = true })<CR>"
 			)
 

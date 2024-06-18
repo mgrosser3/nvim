@@ -36,6 +36,7 @@ vim.opt.scrolloff = 10 -- minimal number of screen lines to keep above and below
 vim.opt.completeopt = "menuone,noinsert,noselect"
 vim.opt.showtabline = 0 -- never show tabline
 vim.opt.pumheight = 10 -- limit completion items
+vim.opt.cursorline = true -- highlight the current line
 
 -- Behaviour
 vim.opt.errorbells = false -- switch off noise in case of errors
@@ -104,7 +105,7 @@ vim.keymap.set("n", "<A-S-i>", "<cmd>TypescriptAddMissingImports<CR>")
 vim.keymap.set("n", "<A-S-r>", "<cmd>TypescriptRemoveUnused<CR>")
 
 vim.keymap.set("i", "<C-s>", "<ESC>")
-vim.keymap.set("n", "<C-s>", ":w<CR>")
+vim.keymap.set("n", "<C-s>", ":wall<CR>", { noremap = true, silent = true })
 
 vim.keymap.set("n", "<C-tab>", ":e#<CR>")
 

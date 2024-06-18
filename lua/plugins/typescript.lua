@@ -11,6 +11,11 @@ return {
 					preferences = {
 						includeCompletionsForModuleExports = false,
 					},
+					on_attach = function(client, bufnr)
+						-- your other on_attach stuff here if you have any
+						-- ...
+						vim.lsp.inlay_hint.enable(true)
+					end,
 				},
 			})
 		end,

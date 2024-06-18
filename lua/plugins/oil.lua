@@ -21,6 +21,16 @@ return {
 					["q"] = "actions.close",
 					["<C-s>"] = false,
 				},
+				buf_options = {
+					buflisted = true,
+				},
+				delete_to_trash = true,
+				columns = {
+					-- "permissions",
+					"size",
+					"mtime",
+					"icon",
+				},
 			})
 		end,
 	},
