@@ -10,6 +10,12 @@ return {
 		config = function()
 			require("fzf-lua").setup({
 				"telescope",
+        defaults = {
+          formatter = "path.filename_first",
+        },
+        files = {
+          formatter = "path.filename_first",
+        },
 				winopts = {
 					-- split = "belowright new", -- open in a top split
 					on_create = function()
@@ -17,6 +23,8 @@ return {
 						-- can be used to add custom fzf-lua mappings, e.g:
 						vim.keymap.set("t", "<C-j>", "<Down>", { silent = true, buffer = true })
 						vim.keymap.set("t", "<C-k>", "<Up>", { silent = true, buffer = true })
+						vim.keymap.set("t", "<A-j>", "<Down>", { silent = true, buffer = true })
+						vim.keymap.set("t", "<A-k>", "<Up>", { silent = true, buffer = true })
 					end,
 				},
 			})
