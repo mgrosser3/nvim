@@ -63,6 +63,9 @@ vim.keymap.set("n", "<leader>e", vim.cmd.Ex, { desc = "netrw" })
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv") -- move up
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv") -- move down
 
+-- Exit from insert mode by Esc in Terminal
+vim.keymap.set('t', '<esc>', [[<C-\><C-n>]])
+
 -- Remaps
 vim.keymap.set("i", "<C-c>", "<ESC>") -- CTRL-C -> ESC
 
