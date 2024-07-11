@@ -85,8 +85,9 @@ end
 -- GUI specific configuration
 -- ./lua/gui.lua
 --
-
-pcall(require, 'gui')
+if vim.fn.has("gui_running") then
+  pcall(require, 'gui')
+end
 
 --
 -- Package Manager lazy.vim
