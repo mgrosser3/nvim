@@ -11,43 +11,43 @@ vim.g.maplocalleader = " "
 --
 
 -- Tabstop Settings
-vim.opt.tabstop = 2 -- width of tab character
-vim.opt.softtabstop = 2 -- amount of white space to be added
-vim.opt.shiftwidth = 2 -- amount of white space to add in normal mode
+vim.opt.tabstop = 2      -- width of tab character
+vim.opt.softtabstop = 2  -- amount of white space to be added
+vim.opt.shiftwidth = 2   -- amount of white space to add in normal mode
 vim.opt.expandtab = true -- use spaces instead of tabs
 
 -- Indentation Settings
 vim.opt.smartindent = true -- autoindenting when starting a new line
-vim.opt.wrap = false -- disable line wrapping
+vim.opt.wrap = false       -- disable line wrapping
 
 -- Search
-vim.opt.incsearch = true -- enable incremental search
+vim.opt.incsearch = true  -- enable incremental search
 vim.opt.ignorecase = true -- ignore case in search pattern
-vim.opt.smartcase = true -- case sensitive, if search pattern contains upper case characters
-vim.opt.hlsearch = true -- disable highlighting
+vim.opt.smartcase = true  -- case sensitive, if search pattern contains upper case characters
+vim.opt.hlsearch = true   -- disable highlighting
 
 -- Appearance
 vim.opt.relativenumber = true -- enable relative line numbers
-vim.opt.number = true -- enable line numbers
-vim.opt.colorcolumn = "120" -- highlighted line length
-vim.opt.signcolumn = "yes" -- draw the signcolumn (default = "auto")
-vim.opt.cmdheight = 1 -- number of screen lines to use for the command-line
-vim.opt.scrolloff = 10 -- minimal number of screen lines to keep above and below the cursor
+vim.opt.number = true         -- enable line numbers
+vim.opt.colorcolumn = "120"   -- highlighted line length
+vim.opt.signcolumn = "yes"    -- draw the signcolumn (default = "auto")
+vim.opt.cmdheight = 1         -- number of screen lines to use for the command-line
+vim.opt.scrolloff = 10        -- minimal number of screen lines to keep above and below the cursor
 vim.opt.completeopt = "menuone,noinsert,noselect"
-vim.opt.showtabline = 0 -- never show tabline
-vim.opt.pumheight = 10 -- limit completion items
-vim.opt.cursorline = true -- highlight the current line
+vim.opt.showtabline = 0       -- never show tabline
+vim.opt.pumheight = 10        -- limit completion items
+vim.opt.cursorline = true     -- highlight the current line
 
 -- Behaviour
 vim.opt.errorbells = false -- switch off noise in case of errors
-vim.opt.swapfile = false -- disable swapfiles for buffers
-vim.opt.backup = false -- disable backup file
-vim.opt.undofile = true -- enable undo files
+vim.opt.swapfile = false   -- disable swapfiles for buffers
+vim.opt.backup = false     -- disable backup file
+vim.opt.undofile = true    -- enable undo files
 vim.opt.undodir = vim.fn.expand("~/.nvim/undo")
 vim.opt.backspace = "indent,eol,start"
 vim.opt.splitright = true
 vim.opt.splitbelow = true
-vim.opt.autochdir = true -- don't change the working directory automatically
+vim.opt.autochdir = true  -- don't change the working directory automatically
 vim.opt.iskeyword:append("-")
 vim.opt.mouse:append("a") -- enable mouse support for all modes
 vim.opt.clipboard = "unnamedplus"
@@ -114,7 +114,7 @@ vim.keymap.set("i", "<C-Enter>", "<C-o>O")
 vim.keymap.set("n", "<A-u>", "<cmd>noh<cr>")
 
 vim.diagnostic.config({
-	virtual_text = false,
+  virtual_text = false,
 })
 
 --
@@ -122,7 +122,7 @@ vim.diagnostic.config({
 --
 
 if vim.loop.os_uname().sysname == "Windows" then
-	pcall(require, "windows")
+  pcall(require, "windows")
 end
 
 --
@@ -138,17 +138,21 @@ require("gui")
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-	vim.fn.system({
-		"git",
-		"clone",
-		"--filter=blob:none",
-		"https://github.com/folke/lazy.nvim.git",
-		"--branch=stable", -- latest stable release
-		lazypath,
-	})
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
 end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-	{ import = "plugins" },
+  { import = "plugins" },
 })
+
+
+-- idealer Weg: Expressions udn Gültigkeiten topologisch sortiert und dann in
+-- einem Durchlauf auswerten
