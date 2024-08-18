@@ -107,7 +107,4 @@ if not vim.loop.fs_stat(lazypath) then
 end
 
 vim.opt.rtp:prepend(lazypath)
-
-if vim.fn.isdirectory(vim.fn.stdpath("config") .. "/lua/plugins") == 1 then
-  require("lazy").setup({ { import = "plugins" } })
-end
+require("lazy").setup({ { import = "plugins" } })
