@@ -21,6 +21,10 @@ vim.opt.expandtab = true -- use spaces instead of tabs
 vim.opt.smartindent = true -- autoindenting when starting a new line
 vim.opt.wrap = false       -- disable line wrapping
 
+-- Folding
+vim.o.foldmethod = 'syntax' -- use syntax fold method
+vim.o.foldlevelstart = 99   -- open all folds by default
+
 -- Search
 vim.opt.incsearch = true  -- enable incremental search
 vim.opt.ignorecase = true -- ignore case in search pattern
