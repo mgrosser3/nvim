@@ -45,7 +45,7 @@ vim.opt.undodir = vim.fn.expand("~/.nvim/undo")
 vim.opt.backspace = "indent,eol,start"
 vim.opt.splitright = true
 vim.opt.splitbelow = true
-vim.opt.autochdir = true  -- change current working directory whenever you open a file
+vim.opt.autochdir = false -- don't change the working directory automatically
 vim.opt.iskeyword:append("-")
 vim.opt.mouse:append("a") -- enable mouse support for all modes
 vim.opt.clipboard:append("unnamedplus")
