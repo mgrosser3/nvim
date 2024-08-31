@@ -17,6 +17,11 @@ vim.opt.softtabstop = 2  -- amount of white space to be added
 vim.opt.shiftwidth = 2   -- amount of white space to add in normal mode
 vim.opt.expandtab = true -- use spaces instead of tabs
 
+-- Line wrapping
+vim.opt.wrap = true -- enable line wrapping
+vim.opt.linebreak = true -- prevent line breaks in words
+vim.opt.showbreak = '↪ ' -- character to indicate wrapped lines
+
 -- Indentation
 vim.opt.smartindent = true -- autoindenting when starting a new line
 vim.opt.wrap = false       -- disable line wrapping
