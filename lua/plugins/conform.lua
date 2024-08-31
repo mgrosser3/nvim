@@ -10,6 +10,13 @@ return {
           lua = { "stylua" },
           -- Conform will run multiple formatters sequentially
           python = { "isort", "black" },
+          javascript = { 'prettier' },
+          typescript = { 'prettier' },
+          html = { 'prettier' },
+          css = { 'prettier' },
+          json = { 'prettier' },
+          yaml = { 'prettier' },
+          markdown = { 'prettier' },
         },
 
         format_on_save = {
