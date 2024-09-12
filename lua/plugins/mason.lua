@@ -3,15 +3,12 @@
 -- manage LSP servers, DAP servers, linters, and formatters.
 
 return {
-
-  -- https://github.com/williamboman/mason.nvim
   {
     'williamboman/mason.nvim',
 
     priority = 100, -- make sure to load this before dependent plugins
 
     config = function()
-
       --
       -- Plugin Setup
       --
@@ -25,8 +22,8 @@ return {
           }
         }
       })
-
     end
-  }
-
+  },
+  "williamboman/mason-lspconfig.nvim",
+  "neovim/nvim-lspconfig",
 }

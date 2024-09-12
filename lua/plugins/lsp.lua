@@ -1,127 +1,95 @@
 return {
 
-	--
-	-- Language Server Protocol (LSP) Setup
-	-- Collection of functions that will help you setup Neovim's LSP client,
-	-- so you can get IDE-like features with minimum effort.
-	-- https://github.com/VonHeikemen/lsp-zero.nvim
-	--
+  --
+  -- Language Server Protocol (LSP) Setup
+  -- Collection of functions that will help you setup Neovim's LSP client,
+  -- so you can get IDE-like features with minimum effort.
+  -- https://github.com/VonHeikemen/lsp-zero.nvim
+  --
 
-	{
-		"VonHeikemen/lsp-zero.nvim",
-		priority = 900,
-		lazy = false,
-		keys = {
-			{ "<M-r>", "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename" },
-			{ "¶", "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename" },
-		},
+  {
+    "VonHeikemen/lsp-zero.nvim",
+    priority = 900,
+    lazy = false,
+    keys = {
+      { "<M-r>", "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename" },
+      { "¶",     "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename" },
+    },
 
-		dependencies = {
+    dependencies = {
 
-			-- lspconfig
-			-- https://github.com/neovim/nvim-lspconfig
-			"neovim/nvim-lspconfig",
+      -- lspconfig
+      -- https://github.com/neovim/nvim-lspconfig
+      "neovim/nvim-lspconfig",
 
-			-- mason-lspconfig
-			-- https://github.com/williamboman/mason-lspconfig.nvim
-			"williamboman/mason-lspconfig.nvim",
+      -- mason-lspconfig
+      -- https://github.com/williamboman/mason-lspconfig.nvim
+      "williamboman/mason-lspconfig.nvim",
 
-			-- cmp
-			-- https://github.com/hrsh7th/nvim-cmp
-			"hrsh7th/nvim-cmp",
+      -- cmp
+      -- https://github.com/hrsh7th/nvim-cmp
+      "hrsh7th/nvim-cmp",
 
-			-- cmp-nvim-lsp
-			-- https://github.com/hrsh7th/cmp-nvim-lsp
-			"hrsh7th/cmp-nvim-lsp",
+      -- cmp-nvim-lsp
+      -- https://github.com/hrsh7th/cmp-nvim-lsp
+      "hrsh7th/cmp-nvim-lsp",
 
-			-- LuaSnip
-			-- https://github.com/L3MON4D3/LuaSnip
-			"L3MON4D3/LuaSnip",
-		},
+      -- LuaSnip
+      -- https://github.com/L3MON4D3/LuaSnip
+      "L3MON4D3/LuaSnip",
+    },
 
-		config = function()
-			local lsp_zero = require("lsp-zero")
+    config = function()
+      local lsp_zero = require("lsp-zero")
 
-			lsp_zero.on_attach(function(client, bufnr)
-				local opts = { buffer = bufnr, remap = false }
-				vim.keymap.set("n", "gd", function()
-					vim.lsp.buf.definition()
-				end, opts)
-				vim.keymap.set("n", "K", function()
-					vim.lsp.buf.hover()
-				end, opts)
-				vim.keymap.set("n", "<leader>vws", function()
-					vim.lsp.buf.workspace_symbol()
-				end, opts)
-				vim.keymap.set("n", "<leader>vd", function()
-					vim.diagnostic.open_float()
-				end, opts)
-				vim.keymap.set("n", "[d", function()
-					vim.diagnostic.goto_next()
-				end, opts)
-				vim.keymap.set("n", "]d", function()
-					vim.diagnostic.goto_prev()
-				end, opts)
-				vim.keymap.set("n", "<leader>vca", function()
-					vim.lsp.buf.code_action()
-				end, opts)
-				vim.keymap.set("n", "<leader>vrr", function()
-					vim.lsp.buf.references()
-				end, opts)
-				vim.keymap.set("n", "<leader>vrn", function()
-					vim.lsp.buf.rename()
-				end, opts)
-				vim.keymap.set("i", "<C-h>", function()
-					vim.lsp.buf.signature_help()
-				end, opts)
-			end)
+      lsp_zero.on_attach(function(client, bufnr)
+        local opts = { buffer = bufnr, remap = false }
+        vim.keymap.set("n", "gd", function()
+          vim.lsp.buf.definition()
+        end, opts)
+        vim.keymap.set("n", "K", function()
+          vim.lsp.buf.hover()
+        end, opts)
+        vim.keymap.set("n", "<leader>vws", function()
+          vim.lsp.buf.workspace_symbol()
+        end, opts)
+        vim.keymap.set("n", "<leader>vd", function()
+          vim.diagnostic.open_float()
+        end, opts)
+        vim.keymap.set("n", "[d", function()
+          vim.diagnostic.goto_next()
+        end, opts)
+        vim.keymap.set("n", "]d", function()
+          vim.diagnostic.goto_prev()
+        end, opts)
+        vim.keymap.set("n", "<leader>vca", function()
+          vim.lsp.buf.code_action()
+        end, opts)
+        vim.keymap.set("n", "<leader>vrr", function()
+          vim.lsp.buf.references()
+        end, opts)
+        vim.keymap.set("n", "<leader>vrn", function()
+          vim.lsp.buf.rename()
+        end, opts)
+        vim.keymap.set("i", "<C-h>", function()
+          vim.lsp.buf.signature_help()
+        end, opts)
+      end)
 
-			-- Setup mason-lspconfig
-			require("mason-lspconfig").setup({
-				ensure_installed = { "vimls", "lua_ls", "tsserver" },
-				handlers = {
-					lsp_zero.default_setup,
-					tsserver = function()
-						local lspconfig = require("lspconfig")
+      -- Setup mason-lspconfig
+      require("mason-lspconfig").setup({
+        ensure_installed = { "vimls", "lua_ls", "tsserver" },
+        handlers = {
+          lsp_zero.default_setup,
+          lua_ls = function()
+            local lua_opts = lsp_zero.nvim_lua_ls()
+            local lspconfig = require("lspconfig")
+            lspconfig.lua_ls.setup(lua_opts)
+          end,
+        },
+      })
 
-						lspconfig.tsserver.setup({
-							settings = {
-								typescript = {
-									inlayHints = {
-										includeInlayParameterNameHints = "all",
-										includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-										includeInlayFunctionParameterTypeHints = true,
-										includeInlayVariableTypeHints = true,
-										includeInlayVariableTypeHintsWhenTypeMatchesName = true,
-										includeInlayPropertyDeclarationTypeHints = true,
-										includeInlayFunctionLikeReturnTypeHints = true,
-										includeInlayEnumMemberValueHints = true,
-									},
-								},
-								javascript = {
-									inlayHints = {
-										includeInlayParameterNameHints = "all",
-										includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-										includeInlayFunctionParameterTypeHints = true,
-										includeInlayVariableTypeHints = true,
-										includeInlayVariableTypeHintsWhenTypeMatchesName = true,
-										includeInlayPropertyDeclarationTypeHints = true,
-										includeInlayFunctionLikeReturnTypeHints = true,
-										includeInlayEnumMemberValueHints = true,
-									},
-								},
-							},
-						})
-					end,
-					lua_ls = function()
-						local lua_opts = lsp_zero.nvim_lua_ls()
-						local lspconfig = require("lspconfig")
-						lspconfig.lua_ls.setup(lua_opts)
-					end,
-				},
-			})
-
-			vim.keymap.set({ "n", "v" }, "<C-.>", "<cmd>lua vim.lsp.buf.code_action()<CR>")
-		end,
-	},
+      vim.keymap.set({ "n", "v" }, "<C-.>", "<cmd>lua vim.lsp.buf.code_action()<CR>")
+    end,
+  },
 }
