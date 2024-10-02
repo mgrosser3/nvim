@@ -21,7 +21,7 @@ return {
           ["<C-d>"] = cmp.mapping.scroll_docs(4),
           ["<C-j>"] = cmp.mapping.select_next_item(),
           ["<C-k>"] = cmp.mapping.select_prev_item(),
-          ["<C-Space>"] = cmp.mapping.complete(),
+          ["<C-i>"] = cmp.mapping.complete(),
           ["<C-e>"] = cmp.mapping.close(),
           ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
           -- ["<CR>"] = cmp.mapping(
@@ -53,14 +53,15 @@ return {
 
       -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
       cmp.setup.cmdline({ "/", "?" }, {
-        mapping = {
+        mapping = cmp.mapping.preset.cmdline({
           -- ["<CR>"] = cmp.mapping(
           --   cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Insert }),
           --   { "i", "c" }
           -- ),
+          ['<C-i>'] = cmp.mapping(cmp.mapping.confirm({ select = true }), { "i", "c" }),
           ["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
           ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
-        },
+        }),
         sources = {
           { name = "buffer" },
         },
@@ -68,14 +69,16 @@ return {
 
       -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
       cmp.setup.cmdline(":", {
-        mapping = {
+        mapping = cmp.mapping.preset.cmdline({
           -- ["<CR>"] = cmp.mapping(
           --   cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Insert }),
           --   { "i", "c" }
           -- ),
+          -- ["<C-i>"] = cmp.mapping.complete(),
+          ['<C-i>'] = cmp.mapping(cmp.mapping.confirm({ select = true }), { "i", "c" }),
           ["<c-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
           ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
-        },
+        }),
         sources = cmp.config.sources({
           { name = "path" },
         }, {
