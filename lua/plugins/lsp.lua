@@ -142,4 +142,12 @@ return {
     end
   },
 
+  -- https://github.com/mfussenegger/nvim-jdtls
+  ---------------------------------------------
+  -- In the documentation of lspconfig it is recommended to use the nvim-jdtls
+  -- plugin to use all features of the java language server.
+  -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#jdtls
+  {
+    'mfussenegger/nvim-jdtls',
+  }
 }
