@@ -5,6 +5,8 @@ if not status then
 end
 
 local id = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
+
+-- TODO: I would  like use '<root_dir>/.cache/jdtls'.
 local workspace = "~/.cache/jdtls/workspace/" .. id
 
 local config = {
@@ -25,14 +27,16 @@ local config = {
     '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
 
     -- requirement: jdtls was installed with mason
-    '-jar', vim.stdpath("data") .. '/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_*.jar',
+    -- FIX: explicit specification of the verison
+    -- org.eclipse.equinox.launcher_1.6.900.v20240613-2009.jar
+    '-jar', vim.fn.stdpath("data") ..
+  '/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_1.6.900.v20240613-2009.jar',
 
     -- location to the config.ini of jdtls (only windows)
     -- TODO: OS dependent configuration (linux, mac and windows)
-    '-configuration', vim.stdpath("data") .. '/mason/packages/jdtls/config_win',
+    '-configuration', vim.fn.stdpath("data") .. '/mason/packages/jdtls/config_win',
 
     -- jdtls data directory
-    -- TODO: I would  like use '<root_dir>/.cache/jdtls'.
     '-data', workspace
   },
 
