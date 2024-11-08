@@ -1,3 +1,10 @@
+if vim.g.neovide then
+  vim.g.neovide_cursor_smooth_blink = true
+  vim.g.neovide_cursor_trail_size = 0.8
+  vim.g.neovide_cursor_animation_length = 0.05
+  vim.g.neovide_cursor_antialiasing = true
+end
+
 --
 -- Global Editor Variables
 --
@@ -53,6 +60,10 @@ vim.opt.mouse:append("a") -- enable mouse support for all modes
 vim.opt.clipboard = "unnamedplus"
 vim.opt.modifiable = true -- buffers per default modifiable
 vim.opt.encoding = "UTF-8"
+
+-- -- Spell Check
+-- vim.opt.spelllang = 'en_us'
+-- vim.opt.spell = true
 
 --
 -- NeoVim Keymappings
@@ -159,3 +170,4 @@ require("lazy").setup({
 
 -- idealer Weg: Expressions udn Gültigkeiten topologisch sortiert und dann in
 -- einem Durchlauf auswerten
+--

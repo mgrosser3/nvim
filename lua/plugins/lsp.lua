@@ -78,7 +78,7 @@ return {
 
       -- Setup mason-lspconfig
       require("mason-lspconfig").setup({
-        ensure_installed = { "vimls", "lua_ls", "tsserver" },
+        ensure_installed = { "vimls", "lua_ls" },
         handlers = {
           lsp_zero.default_setup,
           lua_ls = function()
@@ -86,6 +86,14 @@ return {
             local lspconfig = require("lspconfig")
             lspconfig.lua_ls.setup(lua_opts)
           end,
+          typos_lsp = require 'lspconfig'.typos_lsp.setup({
+            init_options = {
+              -- How typos are rendered in the editor, can be one of an Error, Warning, Info or Hint.
+              -- Defaults to error.
+              diagnosticSeverity = "Info"
+            }
+          }
+          )
         },
       })
 

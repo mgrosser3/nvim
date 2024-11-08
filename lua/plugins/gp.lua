@@ -24,6 +24,17 @@ return {
 
         },
         -- For customization, refer to Install > Configuration in the Documentation/Readme
+        agents = {
+          {
+            name = "DeepSeekV2",
+            provider = "ollama",
+            disable = false,
+            chat = true,
+            command = true,
+            model = { model = "deepseek-coder-v2" },
+            system_prompt = "You are an Typescript, React, coding master from Texas.",
+          },
+        }
       }
       require("gp").setup(conf)
 

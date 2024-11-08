@@ -1,8 +1,17 @@
+function my_live_grep()
+  local root = string.gsub(vim.fn.system("git rev-parse --show-toplevel"), "\n", "")
+  if vim.v.shell_error == 0 then
+    require("telescope.builtin").live_grep({ cwd = root })
+  else
+    require("telescope.builtin").live_grep()
+  end
+end
+
 return {
 
   {
     'nvim-telescope/telescope.nvim',
-    branch = "0.1.x",
+    branch = "master",
 
     dependencies = { 'nvim-lua/plenary.nvim' },
 
@@ -17,6 +26,9 @@ return {
 
       telescope.setup({
         defaults = {
+          path_display = {
+            "filename_first"
+          },
 
           -- key maps
           mappings = {
@@ -41,7 +53,7 @@ return {
       vim.keymap.set("n", "ð", builtin.lsp_definitions, {})
 
       vim.keymap.set("n", "đ", builtin.buffers, {})
-      vim.keymap.set("n", "<C-4>", builtin.live_grep, {})
+      vim.keymap.set("n", "<C-4>", my_live_grep, {})
       vim.keymap.set("n", "<C-7>", builtin.oldfiles, {})
       vim.keymap.set("n", "<C-8>", builtin.buffers, {})
       vim.keymap.set("n", "<C-9>", builtin.git_files, {})
