@@ -3,6 +3,8 @@
 -- https://rosepinetheme.com/palette/ingredients/
 --
 
+local use_transparent_bg = true -- enable transparent background
+
 local colors = {
   base = '#191724',
   surface = '#1f1d2e',
@@ -18,7 +20,8 @@ local colors = {
   iris = '#c4a7e7',
   highlight_low = '#21202e',
   highlight_med = '#403d52',
-  highlight_high = '#524f67'
+  highlight_high = '#524f67',
+  none = 'NONE'
 }
 
 --
@@ -27,12 +30,30 @@ local colors = {
 
 local rose_pine_theme = {
   normal = {
-    a = { fg = colors.base, bg = colors.rose },
-    b = { fg = colors.rose, bg = colors.highlight_low },
-    c = { fg = colors.text, bg = colors.highlight_low },
-    x = { fg = colors.text, bg = colors.highlight_low },
-    y = { fg = colors.rose, bg = colors.highlight_low },
-    z = { fg = colors.base, bg = colors.rose },
+    a = {
+      fg = (use_transparent_bg and colors.rose) or colors.base,
+      bg = (use_transparent_bg and colors.none) or colors.rose,
+    },
+    b = {
+      fg = colors.rose,
+      bg = (use_transparent_bg and colors.none) or colors.highlight_low
+    },
+    c = {
+      fg = colors.text,
+      bg = (use_transparent_bg and colors.none) or colors.highlight_low
+    },
+    x = {
+      fg = colors.text,
+      bg = (use_transparent_bg and colors.none) or colors.highlight_low
+    },
+    y = {
+      fg = colors.rose,
+      bg = (use_transparent_bg and colors.none) or colors.highlight_low
+    },
+    z = {
+      fg = (use_transparent_bg and colors.rose) or colors.base,
+      bg = (use_transparent_bg and colors.none) or colors.rose
+    },
   },
 
   insert = { a = { fg = colors.base, bg = colors.love } },

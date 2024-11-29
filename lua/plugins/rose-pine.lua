@@ -6,8 +6,9 @@ return {
     name = 'rose-pine',
 
     config = function()
-      require('rose-pine').setup({
+      local use_transparent_bg = true -- use transparent mode
 
+      require('rose-pine').setup({
         --- @usage 'auto'|'main'|'moon'|'dawn'
         variant = 'auto',
         --- @usage 'main'|'moon'|'dawn'
@@ -21,7 +22,7 @@ return {
 
         --- @usage string hex value or named color from rosepinetheme.com/palette
         groups = {
-          background = NONE, -- NONE is necessary for transparent background support
+          background = (use_transparent_bg and 'NONE') or 'base',
           background_nc = '_experimental_nc',
           panel = 'surface',
           panel_nc = 'base',
