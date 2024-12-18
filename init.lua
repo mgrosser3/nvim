@@ -99,8 +99,8 @@ vim.keymap.set("n", "<A-k>", "{")
 vim.keymap.set("v", "<A-j>", "}")
 vim.keymap.set("v", "<A-k>", "{")
 
-vim.keymap.set("n", "<C-j>", "<cmd>lua vim.diagnostic.goto_next()<CR>")
-vim.keymap.set("n", "<C-k>", "<cmd>lua vim.diagnostic.goto_prev()<CR>")
+vim.keymap.set("n", "<C-j>", "<cmd>lua vim.diagnostic.goto_next({ float = true })<CR>")
+vim.keymap.set("n", "<C-k>", "<cmd>lua vim.diagnostic.goto_prev({ float = true })<CR>")
 
 vim.keymap.set("n", "<M-NL>", ":cnext<CR>")
 vim.keymap.set("n", "<M-C-K>", ":cprev<CR>")

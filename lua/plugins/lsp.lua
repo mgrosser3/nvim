@@ -1,5 +1,4 @@
 return {
-
   --
   -- Language Server Protocol (LSP) Setup
   -- Collection of functions that will help you setup Neovim's LSP client,
@@ -100,4 +99,12 @@ return {
       vim.keymap.set({ "n", "v" }, "<C-.>", "<cmd>lua vim.lsp.buf.code_action()<CR>")
     end,
   },
+  -- {
+  --   "rachartier/tiny-inline-diagnostic.nvim",
+  --   event = "VeryLazy", -- Or `LspAttach`
+  --   priority = 1000,    -- needs to be loaded in first
+  --   config = function()
+  --     require('tiny-inline-diagnostic').setup()
+  --   end
+  -- }
 }
