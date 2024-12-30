@@ -3,7 +3,11 @@
 -- https://rosepinetheme.com/palette/ingredients/
 --
 
-local use_transparent_bg = true -- enable transparent background
+local use_transparent_bg = false -- enable transparent background
+
+--
+-- Custom Rose Pine Theme for lualine.nvim
+--
 
 local colors = {
   base = '#191724',
@@ -23,10 +27,6 @@ local colors = {
   highlight_high = '#524f67',
   none = 'NONE'
 }
-
---
--- Custom Rose Pine Theme for lualine.nvim
---
 
 local rose_pine_theme = {
   normal = {

@@ -6,7 +6,7 @@ return {
     name = 'rose-pine',
 
     config = function()
-      local use_transparent_bg = true -- use transparent mode
+      local use_transparent_bg = false -- use transparent mode
 
       require('rose-pine').setup({
         --- @usage 'auto'|'main'|'moon'|'dawn'
