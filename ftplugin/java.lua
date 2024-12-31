@@ -4,17 +4,22 @@ if not status then
   return
 end
 
-local id = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
+-- NOTE: jdtls was installed via Mason
+local jdtls_launcher = vim.fn.findfile("org.eclipse.equinox.launcher_1.6.900.v20240613-2009.jar",
+  vim.fn.stdpath("data") .. '/mason/packages/jdtls/plugins/', 1)
 
--- TODO: I would  like use '<root_dir>/.cache/jdtls'.
-local workspace = "~/.cache/jdtls/workspace/" .. id
+-- location to the config.ini of jdtls (only windows)
+-- NOTE: only Windows
+-- TODO: OS dependent configuration (linux and windows)
+local jdtls_config = vim.fn.stdpath("data") .. '/mason/packages/jdtls/config_win'
+
+local jdtls_data = '.jdtls'
 
 local config = {
   -- command to start the language server
   cmd = {
     'java',
 
-    -- define some java properties
     '-Declipse.application=org.eclipse.jdt.ls.core.id1',
     '-Dosgi.bundles.defaultStartLevel=4',
     '-Declipse.product=org.eclipse.jdt.ls.core.product',
@@ -26,18 +31,9 @@ local config = {
     '--add-opens', 'java.base/java.util=ALL-UNNAMED',
     '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
 
-    -- requirement: jdtls was installed with mason
-    -- FIX: explicit specification of the verison
-    -- org.eclipse.equinox.launcher_1.6.900.v20240613-2009.jar
-    '-jar', vim.fn.stdpath("data") ..
-  '/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_1.6.900.v20240613-2009.jar',
-
-    -- location to the config.ini of jdtls (only windows)
-    -- TODO: OS dependent configuration (linux, mac and windows)
-    '-configuration', vim.fn.stdpath("data") .. '/mason/packages/jdtls/config_win',
-
-    -- jdtls data directory
-    '-data', workspace
+    '-jar', jdtls_launcher,
+    '-configuration', jdtls_config,
+    '-data', jdtls_data
   },
 
   -- identify project root directory
