@@ -4,7 +4,7 @@ function Live_grep_git_root_cwd()
 	-- so we don't have to add another warning here, if
 	-- you want to avoid the error message change it to:
 	-- local git_root = fzf_lua.path.git_root(opts, true)
-	local git_root = fzf_lua.path.git_root()
+	local git_root = fzf_lua.path.git_root({}, true)
 	if not git_root then
 		return
 	end

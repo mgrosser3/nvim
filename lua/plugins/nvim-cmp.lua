@@ -113,13 +113,15 @@ return {
 				preset = "enter",
 				["<C-j>"] = { "select_next", "fallback" },
 				["<C-k>"] = { "select_prev", "fallback" },
-				cmdline = {
+			},
+			cmdline = {
+				keymap = {
 					preset = "super-tab",
 					["<C-j>"] = { "select_next", "fallback" },
 					["<C-k>"] = { "select_prev", "fallback" },
+					["<C-CR>"] = { "select_and_accept", "fallback" },
 				},
 			},
-
 			appearance = {
 				-- Sets the fallback highlight groups to nvim-cmp's highlight groups
 				-- Useful for when your theme doesn't support blink.cmp
