@@ -4,14 +4,22 @@ if not status then
   return
 end
 
--- NOTE: jdtls was installed via Mason
-local jdtls_launcher = vim.fn.findfile("org.eclipse.equinox.launcher_1.6.900.v20240613-2009.jar",
-  vim.fn.stdpath("data") .. '/mason/packages/jdtls/plugins/', 1)
+local is_windows = vim.fn.has('win32') == 1
 
--- location to the config.ini of jdtls (only windows)
--- NOTE: only Windows
--- TODO: OS dependent configuration (linux and windows)
-local jdtls_config = vim.fn.stdpath("data") .. '/mason/packages/jdtls/config_win'
+-- assumption: jdtls was installed via Mason
+local jdtls_launcher = vim.fn.glob(vim.fn.stdpath("data") ..
+  "/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_*.jar", true, true)
+
+if type(jdtls_launcher) == "table" and #jdtls_launcher > 0 then
+  jdtls_launcher = jdtls_launcher[1]
+else
+  vim.notify("JDTLS Launcher JAR could not be found!", vim.log.levels.ERROR)
+  return
+end
+
+-- location to the config.ini of jdtls
+local jdtls_config = vim.fn.stdpath("data") .. '/mason/packages/jdtls/config_'
+    .. (is_windows and 'win' or 'linux')
 
 local jdtls_data = '.jdtls'
 
@@ -37,7 +45,8 @@ local config = {
   },
 
   -- identify project root directory
-  root_dir = vim.fs.root(0, { ".git", "mvnw", "gradlew" }),
+  root_dir = vim.fs.root(0, { ".git", "mvnw", "gradlew", "pom.xml",
+    "build.gradle.kts", "settings.gradle.kts" }),
 
   -- configuration of eclipse.jdt.ls specific settings
   settings = {
