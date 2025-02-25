@@ -94,7 +94,14 @@ return {
           -- without a "custom handler"
           function(server_name)
             require('lspconfig')[server_name].setup({})
-          end
+          end,
+
+          -- Java Language Server JDTLS
+          -- ---------------------------
+          -- It is managed by `nvim-jdtls`, so no configuration is needed here.
+          -- For the full Language Server setup, see `ftplugin/java.lua`.
+          jdtls = function()
+          end,
         }
       })
     end
