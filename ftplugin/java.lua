@@ -46,7 +46,7 @@ local config = {
 
   -- identify project root directory
   root_dir = vim.fs.root(0, { ".git", "mvnw", "gradlew", "pom.xml",
-    "build.gradle.kts", "settings.gradle.kts" }),
+    "settings.gradle.kts" }),
 
   -- configuration of eclipse.jdt.ls specific settings
   settings = {
