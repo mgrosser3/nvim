@@ -56,7 +56,11 @@ local config = {
   -- Language server initialization options
   init_options = {
     bundles = {}
-  }
+  },
+
+  on_attach = function(client, bufnr)
+    client.server_capabilities.semanticTokensProvider = nil
+  end,
 }
 
 jdtls.start_or_attach(config)
