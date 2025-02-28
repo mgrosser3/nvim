@@ -10,7 +10,7 @@ need to decide for myself which feature I need and which one I don't. So I see t
 way to question my own needs for an IDE.
 
 I will also recommend [neovimcraft.com](https://neovimcraft.com/) by Eric Bower, where
-you can find a lot of interessting things and inspirations.
+you can find a lot of interesting things and inspirations.
 
 ## Quick Start
 
@@ -19,7 +19,7 @@ you can find a lot of interessting things and inspirations.
 If you have not yet installed Neovim, this is the first step. You can find more information
 about this at https://github.com/neovim/neovim/blob/master/INSTALL.md.
 
-### Clone the Repostory 
+### Clone the Repository 
 
 You have to clone the repository to a specific location, because Neovim expects the
 configuration in the following directories:
@@ -42,9 +42,9 @@ git clone https://github.com/mgrosser3/nvim.git ~/AppData/Local/nvim
 > You can also set the environment variable `XDG_CONFIG_HOME` to specify the storage location
 > for your configuration (`$XDG_CONFIG_HOME/nvim`).
 > 
-> I personally prefer a config folder in my home direcotry on Windows
+> I personally prefer a config folder in my home directory on Windows
 > (`XDG_CONFIG_HOME = $env:USERPROFILE\.config`). Because I don't like looking for things in
-> the hidden Windows AppData folder. I would like to have a similar experiance as on Linux.
+> Windows' AppData folder. I would like to have a similar experience as on Linux.
 
 ## Requires
 
@@ -55,7 +55,7 @@ https://www.jetbrains.com/de-de/lp/mono/
 https://www.nerdfonts.com/
 
 ### Node Package Manager
-You need it to install vim-language-server, see therefor :healthcheck mason.
+You need it to install vim-language-server, see therefore :healthcheck mason.
 
 ## Plugins
 
@@ -108,6 +108,6 @@ Install the PowerShell: `winget install --id Microsoft.PowerShell --source winge
 
 ## Setup on Linux
 
-- Use tar-file from githup-repo
+- Use tar-file from GitHub-Repo 
     - apt-get install only provides an old version
 - Install gcc and g++
