@@ -1,101 +1,89 @@
 # Neovim Configuration
 
-<a href="/LICENSE">![License](https://img.shields.io/github/license/mgrosser3/nvim)</a>
+Welcome to my personal Neovim configuration! 🎉 There are already fantastic configurations like [LunarVim](https://www.lunarvim.org/) or [LazyVim](https://www.lazyvim.org/) that make it easy to get started with Neovim. However, I wanted to build my own setup from scratch—to truly understand how Neovim works and to tailor it exactly to my needs. This way, I can decide for myself which features I need and which ones I don't. Plus, it's a great learning experience! 🚀
 
-Welcome to my personal Neovim configuration. There are already great configurations like
-[LunarVim](https://www.lunarvim.org/) or [LazyVim](https://www.lazyvim.org/) that allow
-a quick start into Neovim for developers. I decided to create my own configuration from
-scratch because I liked to learn more about ways to customize Neovim. Also, I felt the
-need to decide for myself which feature I need and which one I don't. So I see this as a
-way to question my own needs for an IDE.
+If you're looking for more inspiration, I highly recommend checking out [neovimcraft.com](https://neovimcraft.com/) by Eric Bower. It's full of useful plugins and ideas!
 
-I will also recommend [neovimcraft.com](https://neovimcraft.com/) by Eric Bower, where
-you can find a lot of interesting things and inspirations.
+## Features
+⚡ Fast startup using lazy-loaded plugins
+🎨 Beautiful UI with a clean color scheme and status line
+🔍 Powerful fuzzy finder with Telescope
+🛠️ Built-in LSP & autocompletion with Mason & LSP Zero
+📜 Syntax highlighting & code parsing with Treesitter
+⌨️ Helpful keybindings with which-key.nvim
 
-## Quick Start
+## Installation
 
-### Install Neovim
+### Neovim
 
-If you have not yet installed Neovim, this is the first step. You can find more information
-about this at https://github.com/neovim/neovim/blob/master/INSTALL.md.
+If you haven’t installed Neovim yet, that’s your first step! Check out the official [installation guide](https://github.com/neovim/neovim/blob/master/INSTALL.md) for the latest instructions.
 
-### Clone the Repository 
+### Nerd Font 
 
-You have to clone the repository to a specific location, because Neovim expects the
-configuration in the following directories:
+For the best experience, I **strongly recommend** using a [Nerd Font variant of JetBrains Mono](https://www.nerdfonts.com/). This ensures that all icons in Neovim display correctly! 😃
 
-- Linux: `~/.config/nvim`
-- Windows: `~/AppData/Local/nvim`
+### Node.js & npm
 
-To use the configuration, the repository only needs to be cloned into the configuration folder.
+You'll need Node.js and npm for installing `vim-language-server`. To check if everything is set up correctly, simply run `:checkhealth mason` inside Neovim. ✅
+
+### Clone the Repository
+
+Neovim looks for configuration files in specific locations:
+
+- **Linux**: `~/.config/nvim`
+- **Windows**: `~/AppData/Local/nvim`
+
+To get started, just clone this repository into the appropriate directory:
 
 #### Clone on Linux
+
 ```shell
 git clone https://github.com/mgrosser3/nvim.git ~/.config/nvim
 ```
+
 #### Clone on Windows
+
 ```shell
 git clone https://github.com/mgrosser3/nvim.git ~/AppData/Local/nvim
 ```
 
-> [!TIP]
-> You can also set the environment variable `XDG_CONFIG_HOME` to specify the storage location
-> for your configuration (`$XDG_CONFIG_HOME/nvim`).
-> 
-> I personally prefer a config folder in my home directory on Windows
-> (`XDG_CONFIG_HOME = $env:USERPROFILE\.config`). Because I don't like looking for things in
-> Windows' AppData folder. I would like to have a similar experience as on Linux.
-
-## Requires
-
-### Font JetBrains Mono
-https://www.jetbrains.com/de-de/lp/mono/
-
-#### Nerd Font Variant
-https://www.nerdfonts.com/
-
-### Node Package Manager
-You need it to install vim-language-server, see therefore :healthcheck mason.
+> **Tip:** You can also set the `XDG_CONFIG_HOME` environment variable to choose a custom config location (`$XDG_CONFIG_HOME/nvim`).
+>
+> Personally, I prefer storing my config in my home directory on Windows (`XDG_CONFIG_HOME = $env:USERPROFILE\.config`), because digging through the AppData folder is no fun. 😅
 
 ## Plugins
 
-### lazy.vim
-https://github.com/folke/lazy.nvim
+This setup includes some amazing plugins to enhance your Neovim experience! ✨
 
-### Rose Pine
-https://github.com/rose-pine/neovim
-
-### LuaLine
-https://github.com/nvim-lualine/lualine.nvim
-
-### Telescope
-https://github.com/nvim-telescope/telescope.nvim
-
-### Treesitter
-https://github.com/nvim-treesitter/nvim-treesitter
-
-### LSP Zero
-https://github.com/VonHeikemen/lsp-zero.nvim
-
-### which-key
-https://github.com/folke/which-key.nvim
+| Plugin                                                                | Description                                 |
+| --------------------------------------------------------------------- | ------------------------------------------- |
+| [lazy.nvim](https://github.com/folke/lazy.nvim)                       | A fast and lightweight plugin manager       |
+| [rose-pine](https://github.com/rose-pine/neovim)                      | A beautiful color scheme                    |
+| [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)          | A sleek and customizable status line        |
+| [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)    | A powerful fuzzy finder                     |
+| [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) | Enhanced syntax highlighting and parsing    |
+| [lsp-zero.nvim](https://github.com/VonHeikemen/lsp-zero.nvim)         | A streamlined LSP setup                     |
+| [which-key.nvim](https://github.com/folke/which-key.nvim)             | Helps you remember keybindings effortlessly |
 
 ## Setup on Windows
 
-Since a few additional tools are needed from time to time, it makes
-sense to install a package manager like [scoop](https://scoop.sh/).
-For example Treesitter requires a C++ compiler, which we can easily
-install using `scoop install gcc`.
+Windows users, don't worry—I've got you covered! 😊 Since some tools are required for full functionality, I recommend installing a package manager like [scoop](https://scoop.sh/). For example, Treesitter needs a C++ compiler, which you can install easily with:
+
+```shell
+scoop install gcc
+```
 
 ### PowerShell 7.x
 
-There are two different versions of the PowerShell. For details more
-details see: [Differences between Windows PowerShell 5.1 and PowerShell 7.x]
-(https://learn.microsoft.com/en-us/powershell/scripting/whats-new/differences-from-windows-powershell?view=powershell-7.3)
+Neovim's Mason plugin works best with PowerShell 7.x (`pwsh.exe`). If you’re still using the older version, it’s time for an upgrade! 🚀
 
-It is recommended to install it, because the mason plugin requires PowerShell 7.x (pwsh.exe).
+To check for the latest version:
 
-Search for the latest version: `winget search Microsoft.PowerShell`
+```shell
+winget search Microsoft.PowerShell
+```
+
+Example output:
 
 ```
 Name               Id                           Version Source
@@ -104,10 +92,16 @@ PowerShell         Microsoft.PowerShell         7.3.8.0 winget
 PowerShell Preview Microsoft.PowerShell.Preview 7.4.0.6 winget
 ```
 
-Install the PowerShell: `winget install --id Microsoft.PowerShell --source winget`
+To install PowerShell 7.x:
+
+```shell
+winget install --id Microsoft.PowerShell --source winget
+```
 
 ## Setup on Linux
 
-- Use tar-file from GitHub-Repo 
-    - apt-get install only provides an old version
-- Install gcc and g++
+Linux users, you’re probably already pros at this! 🐧 Just a quick tip: instead of using `apt-get install`, which often provides outdated versions, grab the latest **tar-file** from the [official Neovim releases](https://github.com/neovim/neovim/releases) page.
+
+---
+
+This README is here to make your setup experience as smooth as possible! If you have any questions, suggestions, or just want to share your experience, feel free to open an issue on GitHub. Happy coding! 🎉
