@@ -5,7 +5,6 @@ if not status then
 end
 
 local is_windows = vim.fn.has('win32') == 1
-
 -- assumption: jdtls was installed via Mason
 local jdtls_launcher = vim.fn.glob(vim.fn.stdpath("data") ..
   "/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_*.jar", true, true)
@@ -21,7 +20,23 @@ end
 local jdtls_config = vim.fn.stdpath("data") .. '/mason/packages/jdtls/config_'
     .. (is_windows and 'win' or 'linux')
 
-local jdtls_data = '.jdtls'
+-- The JDT Language Server requires a workspace directory to store metadata,
+-- caches, and project configurations. It is recommended to keep this workspace
+-- in a central location rather than inside individual projects. A good practice
+-- is to place the workspace inside the home directory, similar to how Gradle
+-- stores its metadata.
+local home = is_windows and os.getenv 'USERPROFILE' or os.getenv 'HOME'
+local project = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
+local workspace = home .. '/.eclipse/jdtls-workspace/' .. project
+
+-- check whether the workspace already exists
+if vim.fn.isdirectory(workspace) == 1 then
+  -- TODO: More intelligent handling would be better here, instead of
+  --       displaying an error and not starting the language server.
+  vim.api.nvim_err_writeln("ERROR: JDTLS workspace directory already exists: "
+    .. workspace)
+  return
+end
 
 local config = {
   -- command to start the language server
@@ -41,12 +56,12 @@ local config = {
 
     '-jar', jdtls_launcher,
     '-configuration', jdtls_config,
-    '-data', jdtls_data
+    '-data', workspace
   },
 
   -- identify project root directory
-  root_dir = vim.fs.root(0, { ".git", "mvnw", "gradlew", "pom.xml",
-    "settings.gradle.kts" }),
+
+  root_dir = vim.fs.root(0, { ".git", "gradlew", "gradle.properties", "settings.gradle.kts" }),
 
   -- configuration of eclipse.jdt.ls specific settings
   settings = {
