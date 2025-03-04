@@ -29,15 +29,6 @@ local home = is_windows and os.getenv 'USERPROFILE' or os.getenv 'HOME'
 local project = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
 local workspace = home .. '/.eclipse/jdtls-workspace/' .. project
 
--- check whether the workspace already exists
-if vim.fn.isdirectory(workspace) == 1 then
-  -- TODO: More intelligent handling would be better here, instead of
-  --       displaying an error and not starting the language server.
-  vim.api.nvim_err_writeln("ERROR: JDTLS workspace directory already exists: "
-    .. workspace)
-  return
-end
-
 local config = {
   -- command to start the language server
   cmd = {
