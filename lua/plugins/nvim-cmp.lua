@@ -115,8 +115,13 @@ return {
 				["<C-k>"] = { "select_prev", "fallback" },
 			},
 			cmdline = {
+				completion = {
+					menu = {
+						auto_show = true,
+					},
+				},
 				keymap = {
-					preset = "super-tab",
+					-- preset = "super-tab",
 					["<C-j>"] = { "select_next", "fallback" },
 					["<C-k>"] = { "select_prev", "fallback" },
 					["<C-CR>"] = { "select_and_accept", "fallback" },
