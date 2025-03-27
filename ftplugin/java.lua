@@ -5,6 +5,7 @@ if not status then
 end
 
 local is_windows = vim.fn.has('win32') == 1
+
 -- assumption: jdtls was installed via Mason
 local jdtls_launcher = vim.fn.glob(vim.fn.stdpath("data") ..
   "/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_*.jar", true, true)
@@ -51,7 +52,6 @@ local config = {
   },
 
   -- identify project root directory
-
   root_dir = vim.fs.root(0, { ".git", "gradlew", "gradle.properties", "settings.gradle.kts" }),
 
   -- configuration of eclipse.jdt.ls specific settings
