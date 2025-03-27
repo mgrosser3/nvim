@@ -21,7 +21,14 @@ end
 local jdtls_config = vim.fn.stdpath("data") .. '/mason/packages/jdtls/config_'
     .. (is_windows and 'win' or 'linux')
 
-local jdtls_data = '.jdtls'
+-- The JDT Language Server requires a workspace directory to store metadata,
+-- caches, and project configurations. It is recommended to keep this workspace
+-- in a central location rather than inside individual projects. A good practice
+-- is to place the workspace inside the home directory, similar to how Gradle
+-- stores its metadata.
+local home = is_windows and os.getenv 'USERPROFILE' or os.getenv 'HOME'
+local project = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
+local workspace = home .. '/.eclipse/jdtls-workspace/' .. project
 
 local config = {
   -- command to start the language server
@@ -41,12 +48,11 @@ local config = {
 
     '-jar', jdtls_launcher,
     '-configuration', jdtls_config,
-    '-data', jdtls_data
+    '-data', workspace
   },
 
   -- identify project root directory
-  root_dir = vim.fs.root(0, { ".git", "mvnw", "gradlew", "pom.xml",
-    "settings.gradle.kts" }),
+  root_dir = vim.fs.root(0, { ".git", "gradlew", "gradle.properties", "settings.gradle.kts" }),
 
   -- configuration of eclipse.jdt.ls specific settings
   settings = {
