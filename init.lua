@@ -81,6 +81,12 @@ vim.keymap.set("t", "<esc>", [[<C-\><C-n>]])
 -- Remaps
 vim.keymap.set("i", "<C-c>", "<ESC>") -- CTRL-C -> ESC
 
+-- Diagnostics
+vim.diagnostic.config({ virtual_text = true })
+--vim.diagnostic.config({
+--  virtual_text = { current_line = true }
+--})
+
 --
 --
 -- Windows specific configuration
