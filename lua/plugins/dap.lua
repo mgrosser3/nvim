@@ -6,6 +6,7 @@ return {
 
   {
     'mfussenegger/nvim-dap',
+    event = "VeryLazy",
 
     config = function()
       local dap = require('dap')
@@ -23,6 +24,7 @@ return {
 
   {
     'rcarriga/nvim-dap-ui',
+    event = "VeryLazy",
 
     dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
 
@@ -52,6 +54,7 @@ return {
 
   {
     'rcarriga/nvim-dap-ui',
+    event = "VeryLazy",
 
     config = function()
       local dapui = require('dapui')
@@ -78,7 +81,8 @@ return {
   --
 
   {
-    'theHamsta/nvim-dap-virtual-text'
+    'theHamsta/nvim-dap-virtual-text',
+    event = "VeryLazy"
   },
 
   --
@@ -87,6 +91,7 @@ return {
 
   {
     'mfussenegger/nvim-dap-python',
+    event = "VeryLazy",
 
     config = function()
       -- HACK: Hard coded python interpreter!

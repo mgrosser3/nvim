@@ -5,6 +5,7 @@ return {
 
   {
     'nvim-treesitter/nvim-treesitter',
+    event = "VeryLazy",
 
     -- build is executed when the plugin is installed or updated
     build = ':TSUpdate',

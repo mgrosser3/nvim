@@ -12,6 +12,7 @@ return {
   {
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v4.x',
+    event = "VeryLazy",
     lazy = true,
     config = false
   },
@@ -44,6 +45,7 @@ return {
   -- for a lot of different LSP servers.
   {
     'neovim/nvim-lspconfig',
+    event = "VeryLazy",
 
     dependencies = {
 
