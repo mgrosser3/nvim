@@ -17,6 +17,7 @@ return {
           json = { 'prettier' },
           yaml = { 'prettier' },
           markdown = { 'prettier' },
+          haskell = { 'ormolu' },
         },
 
         format_on_save = {
