@@ -17,12 +17,13 @@ return {
           json = { 'prettier' },
           yaml = { 'prettier' },
           markdown = { 'prettier' },
+          haskell = { 'ormolu' },
         },
 
         format_on_save = {
           -- I recommend these options. See :help conform.format for details.
           lsp_fallback = true,
-          timeout_ms   = 500,
+          timeout_ms   = 3000,
         },
       }
     end
