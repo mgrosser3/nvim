@@ -80,8 +80,9 @@ vim.keymap.set("n", "<S-CR>", "o<ESC>")
 -- Exit from insert mode by Esc in Terminal
 vim.keymap.set("t", "<esc>", [[<C-\><C-n>]])
 
--- Remaps
-vim.keymap.set("i", "<C-c>", "<ESC>") -- CTRL-C -> ESC
+-- Make <C-c> behave exactly like <Esc> in insert mode
+-- (also triggers InsertLeave autocommands)
+vim.keymap.set("i", "<C-c>", "<ESC>")
 
 -- Diagnostics
 vim.diagnostic.config({ virtual_text = true })
