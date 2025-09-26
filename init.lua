@@ -86,9 +86,6 @@ vim.keymap.set("i", "<C-c>", "<ESC>")
 
 -- Diagnostics
 vim.diagnostic.config({ virtual_text = true })
---vim.diagnostic.config({
---  virtual_text = { current_line = true }
---})
 
 --
 --
