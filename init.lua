@@ -18,7 +18,9 @@ vim.opt.shiftwidth = 2   -- amount of white space to add in normal mode
 vim.opt.expandtab = true -- use spaces instead of tabs
 
 -- Line wrapping
-vim.opt.wrap = true -- enable line wrapping
+-- By default, line wrapping is disabled.
+-- This keeps relative line numbers clear and avoids confusion.
+vim.opt.wrap = false -- disable line wrapping
 vim.opt.linebreak = true -- prevent line breaks in words
 vim.opt.showbreak = "↪ " -- character to indicate wrapped lines
 vim.opt.wrapmargin = 0 -- chars from the right border where wrapping starts
