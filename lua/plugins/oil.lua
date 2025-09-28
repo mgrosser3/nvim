@@ -1,7 +1,7 @@
 return {
   {
     'stevearc/oil.nvim',
-    dependencies = { { "echasnovski/mini.icons" } },
+    dependencies = { { "nvim-mini/mini.icons" } },
     config = function()
       require("oil").setup({
         -- Oil will take over directory buffers (e.g. `vim .` or `:e src/`)
