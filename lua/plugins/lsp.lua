@@ -86,7 +86,7 @@ return {
       end
 
       lspconfig_mason.setup({
-        ensure_installed = { 'lua_ls', 'pyright' },
+        ensure_installed = { 'lua_ls', 'pyright', 'jdtls' },
 
         handlers = {
           -- Default handler applies to every installed language server
