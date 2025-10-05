@@ -86,6 +86,7 @@ vim.keymap.set("t", "<esc>", [[<C-\><C-n>]])
 vim.keymap.set("i", "<C-c>", "<ESC>")
 
 -- Diagnostics
+-- Disabled by default in Neovim 0.11.
 vim.diagnostic.config({ virtual_text = true })
 
 -- Toggle line wrapping with <leader>w
