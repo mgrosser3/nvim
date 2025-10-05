@@ -89,15 +89,15 @@ return {
   -- Debug Adapter Protocol Python
   --
 
-  {
-    'mfussenegger/nvim-dap-python',
-    event = "VeryLazy",
-
-    config = function()
-      -- HACK: Hard coded python interpreter!
-      -- INFO: .setup(os.getenv("VIRTUAL_ENV") .. "/bin/python")
-      require('dap-python').setup('~/Entwicklung/.venv/Scripts/python.exe')
-    end
-
-  }
+  -- {
+  --   'mfussenegger/nvim-dap-python',
+  --   event = "VeryLazy",
+  --
+  --   config = function()
+  --     -- HACK: Hard coded python interpreter!
+  --     -- INFO: .setup(os.getenv("VIRTUAL_ENV") .. "/bin/python")
+  --     require('dap-python').setup('~/Entwicklung/.venv/Scripts/python.exe')
+  --   end
+  --
+  -- }
 }
