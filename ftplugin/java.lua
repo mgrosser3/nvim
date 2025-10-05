@@ -12,8 +12,8 @@ local java_test_path = mason_path .. "/java-test"
 local java_debug_path = mason_path .. "/java-debug-adapter"
 
 -- assumption: jdtls was installed via Mason
-local jdtls_launcher = vim.fn.glob(vim.fn.stdpath("data") ..
-  mason_path .. "/jdtls/plugins/org.eclipse.equinox.launcher_*.jar", true, true)
+local jdtls_launcher = vim.fn.glob(mason_path ..
+  "/jdtls/plugins/org.eclipse.equinox.launcher_*.jar", true, true)
 
 if type(jdtls_launcher) == "table" and #jdtls_launcher > 0 then
   jdtls_launcher = jdtls_launcher[1]
