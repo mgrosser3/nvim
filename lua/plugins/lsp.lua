@@ -61,7 +61,6 @@ return {
       local on_attach = function(_, bufnr)
         local opts = { buffer = bufnr, remap = false }
 
-        -- Default Keymaps (since Neovim 0.11)
         vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
         vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
         vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
@@ -70,8 +69,6 @@ return {
         vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
         vim.keymap.set("n", "[d", function() vim.diagnostic.jump({ count = -1 }) end, opts)
         vim.keymap.set("n", "]d", function() vim.diagnostic.jump({ count = 1 }) end, opts)
-
-        -- Custom Keymaps
         vim.keymap.set("n", "<leader>vrn", vim.lsp.buf.rename, opts)
         vim.keymap.set("n", "<leader>vca", vim.lsp.buf.code_action, opts)
         vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, opts)
@@ -86,7 +83,7 @@ return {
       end
 
       lspconfig_mason.setup({
-        ensure_installed = { 'lua_ls', 'pyright', 'jdtls' },
+        ensure_installed = { 'lua_ls', 'pyright', 'jdtls', 'ts-ls' },
 
         handlers = {
           -- Default handler applies to every installed language server
