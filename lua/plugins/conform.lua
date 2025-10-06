@@ -5,10 +5,13 @@ return {
     opts = {},
 
     config = function()
+      local mason_ext = require('mgrosser3.ext.mason')
+      local formatters = { "black", "isort", "stylua", "prettier", "ormolu" }
+      mason_ext.ensure_installed(formatters)
+
       require("conform").setup {
         formatters_by_ft = {
           lua = { "stylua" },
-          -- Conform will run multiple formatters sequentially
           python = { "isort", "black" },
           javascript = { 'prettier' },
           typescript = { 'prettier' },
