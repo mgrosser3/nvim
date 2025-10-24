@@ -86,9 +86,16 @@ return {
 				end, opts)
 			end
 
-			lspconfig_mason.setup({
-				ensure_installed = { "lua_ls", "pyright", "jdtls", "ts_ls", "hls" },
+			-- List of language servers to be installed
+			local servers = { "lua_ls", "pyright", "jdtls", "ts_ls" }
 
+			-- Check whether cabal is avaliable before add haskell language server!
+			if vim.fn.executable("cabal") == 1 then
+				table.insert(servers, "hls")
+			end
+
+			lspconfig_mason.setup({
+				ensure_installed = servers,
 				handlers = {
 					-- Default handler applies to every installed language server
 					-- without a "custom handler"
