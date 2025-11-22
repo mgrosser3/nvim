@@ -13,3 +13,19 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 		vim.highlight.on_yank({ timeout = 350, visual = true })
 	end,
 })
+
+vim.api.nvim_create_autocmd({ "WinEnter", "BufEnter" }, {
+	desc = "Show cursor line on active window.",
+	group = group,
+	callback = function()
+		vim.opt_local.cursorline = true
+	end,
+})
+
+vim.api.nvim_create_autocmd({ "WinLeave", "BufLeave" }, {
+	desc = "Disable cursor line on inactive window.",
+	group = group,
+	callback = function()
+		vim.opt_local.cursorline = false
+	end,
+})

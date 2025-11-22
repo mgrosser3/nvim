@@ -47,6 +47,7 @@ vim.opt.signcolumn = "yes" -- draw the signcolumn (default = "auto")
 vim.opt.cmdheight = 1 -- number of lines to use for the command-line
 vim.opt.scrolloff = 10 -- number of lines to keep above and below the cursor
 vim.opt.completeopt = "menuone,noinsert,noselect"
+vim.opt.cursorline = true
 
 -- Behaviour
 vim.opt.errorbells = false -- switch off noise in case of errors
