@@ -145,6 +145,13 @@ return {
 				-- cmdline = {},
 			},
 
+			signature = {
+				enabled = true,
+				window = {
+					show_documentation = false,
+				},
+			},
+
 			-- experimental signature help support
 			-- signature = { enabled = true }
 		},

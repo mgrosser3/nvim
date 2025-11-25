@@ -18,6 +18,8 @@ return {
 					javascript = { "prettierd", "prettier" },
 					typescriptreact = { "prettierd", "prettier" },
 					typescript = { "prettierd", "prettier" },
+					json = { "prettierd", "prettier" },
+					html = { "prettierd", "prettier" },
 					-- Use the "*" filetype to run formatters on all filetypes.
 					-- ["*"] = { "codespell" },
 				},

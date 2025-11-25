@@ -1,7 +1,17 @@
 -- lazy.nvim
 return {
 	{
+		"olimorris/codecompanion.nvim",
+		enabled = true,
+		opts = {},
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-treesitter/nvim-treesitter",
+		},
+	},
+	{
 		"robitx/gp.nvim",
+		enabled = false,
 		config = function()
 			local conf = {
 				providers = {

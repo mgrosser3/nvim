@@ -44,28 +44,14 @@ return {
 				},
 			})
 			vim.keymap.set("n", "gt", "<cmd>:lua require('fzf-lua').lsp_typedefs({ jump1 = true })<CR>")
-			vim.keymap.set(
-				"n",
-				"gr",
-				"<cmd>:lua require('fzf-lua').lsp_references({ jump1 = true })<CR>"
-			)
+			vim.keymap.set("n", "gr", "<cmd>:lua require('fzf-lua').lsp_references({ jump1 = true })<CR>")
 
-			vim.keymap.set(
-				"n",
-				"gd",
-				"<cmd>:lua require('fzf-lua').lsp_definitions({ jump1 = true })<CR>"
-			)
-			vim.keymap.set(
-				"n",
-				"ð",
-				"<cmd>:lua require('fzf-lua').lsp_definitions({ jump1 = true })<CR>"
-			)
+			vim.keymap.set("n", "gd", "<cmd>:lua require('fzf-lua').lsp_definitions({ jump1 = true })<CR>")
+			vim.keymap.set("n", "ð", "<cmd>:lua require('fzf-lua').lsp_definitions({ jump1 = true })<CR>")
 
-			vim.keymap.set(
-				"n",
-				"ſ",
-				"<cmd>:lua require('fzf-lua').lsp_live_workspace_symbols({ jump1 = true })<CR>"
-			)
+			vim.keymap.set("n", "ſ", "<cmd>:lua require('fzf-lua').lsp_live_workspace_symbols({ jump1 = true })<CR>")
+
+			vim.keymap.set("n", "ŋ", "<cmd>:lua require('fzf-lua').lsp_document_symbols({ jump1 = true })<CR>")
 
 			vim.keymap.set("n", "<M-C-S-F>", ":lua require'fzf-lua'.live_grep({ cwd=\"~/Software\" })<CR>")
 			vim.keymap.set("n", "<M-F>", "<cmd>FzfLua files cwd=~/<CR>")
