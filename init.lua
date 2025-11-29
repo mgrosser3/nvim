@@ -100,14 +100,18 @@ vim.keymap.set("n", "<leader>w", function()
 	end
 end, { desc = "Toggle line wrap" })
 
-require("mgrosser3.autocmd")
-
 --
+-- Custom auto-commands
+-- ./lua/autocmd.lua
+--
+if vim.fn.has("autocmd") then
+	pcall(require, "autocmd")
+end
+
 --
 -- Windows specific configuration
 -- ./lua/windows.lua
 --
-
 if vim.loop.os_uname().sysname == "Windows_NT" then
 	pcall(require, "windows")
 elseif vim.loop.os_uname().sysname == "Linux" then
