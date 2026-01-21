@@ -26,7 +26,7 @@ function M.ensure_installed(tools)
 
 				pkg:on("install:failed", function()
 					vim.schedule(function()
-						vim.notify("Failed to isntall " .. tool .. "!", vim.log.WARN)
+						vim.notify("Failed to install " .. tool .. "!", vim.log.WARN)
 					end)
 				end)
 			end
