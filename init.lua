@@ -112,9 +112,9 @@ end
 -- Windows specific configuration
 -- ./lua/windows.lua
 --
-if vim.loop.os_uname().sysname == "Windows_NT" then
+if vim.uv.os_uname().sysname == "Windows_NT" then
 	pcall(require, "windows")
-elseif vim.loop.os_uname().sysname == "Linux" then
+elseif vim.uv.os_uname().sysname == "Linux" then
 	pcall(require, "linux")
 end
 
@@ -132,7 +132,7 @@ end
 --
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
+if not vim.uv.fs_stat(lazypath) then
 	vim.fn.system({
 		"git",
 		"clone",
