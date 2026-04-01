@@ -43,7 +43,7 @@ vim.opt.hlsearch = false -- disable highlighting
 vim.opt.number = true -- show real line number for current line
 vim.opt.relativenumber = true -- enable relative line numbers
 vim.opt.colorcolumn = "80" -- highlighted line length
-vim.opt.signcolumn = "yes" -- draw the signcolumn (default = "auto")
+vim.opt.signcolumn = "yes:2" -- draw the signcolumn (default = "auto")
 vim.opt.cmdheight = 1 -- number of lines to use for the command-line
 vim.opt.scrolloff = 5 -- number of lines to keep above and below the cursor
 vim.opt.completeopt = "menuone,noinsert,noselect"
