@@ -180,8 +180,8 @@ return {
 							fallback()
 						end
 					end, { "i", "s" }),
+					["<C-Space>"] = cmp.mapping.complete(),
 				}),
-				["<C-Space>"] = cmp.mapping.complete(),
 
 				snippet = {
 					expand = function(args)
