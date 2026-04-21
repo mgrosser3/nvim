@@ -10,30 +10,34 @@ function M.ensure_installed(tools)
 		return
 	end
 
-	for _, tool in ipairs(tools) do
-		local ok, pkg = pcall(registry.get_package, tool)
-		if ok then
-			if not pkg:is_installed() then
-				vim.notify("Installing " .. tool .. " via Mason...", vim.log.levels.INFO)
+	local function install_tools()
+		for _, tool in ipairs(tools) do
+			local ok, pkg = pcall(registry.get_package, tool)
+			if ok then
+				if not pkg:is_installed() then
+					vim.notify("Installing " .. tool .. " via Mason...", vim.log.levels.INFO)
 
-				pkg:install()
+					pkg:install()
 
-				pkg:on("install:success", function()
-					vim.schedule(function()
-						vim.notify(tool .. " installed successfully.", vim.log.levels.INFO)
+					pkg:on("install:success", function()
+						vim.schedule(function()
+							vim.notify(tool .. " installed successfully.", vim.log.levels.INFO)
+						end)
 					end)
-				end)
 
-				pkg:on("install:failed", function()
-					vim.schedule(function()
-						vim.notify("Failed to install " .. tool .. "!", vim.log.WARN)
+					pkg:on("install:failed", function()
+						vim.schedule(function()
+							vim.notify("Failed to install " .. tool .. "!", vim.log.levels.WARN)
+						end)
 					end)
-				end)
+				end
+			else
+				vim.notify("Tool '" .. tool .. "' not found in Mason registry!", vim.log.levels.WARN)
 			end
-		else
-			vim.notify("Tool '" .. tool .. "' not found in Mason registry!", vim.log.levels.WARN)
 		end
 	end
+
+	registry.refresh(vim.schedule_wrap(install_tools))
 end
 
 return M
