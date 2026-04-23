@@ -114,6 +114,8 @@ end
 --
 if vim.uv.os_uname().sysname == "Windows_NT" then
 	pcall(require, "windows")
+elseif vim.uv.os_uname().release:find("WSL") then
+	pcall(require, "wsl")
 elseif vim.uv.os_uname().sysname == "Linux" then
 	pcall(require, "linux")
 end
