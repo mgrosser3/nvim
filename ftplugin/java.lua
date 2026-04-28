@@ -93,8 +93,6 @@ local config = {
 	},
 
 	on_attach = function(client, bufnr)
-		vim.lsp.default_keymaps({ buffer = bufnr })
-
 		-- Java specific actions from nvim-jdtls
 		vim.keymap.set("n", "<leader>oi", jdtls.organize_imports, { buffer = bufnr, desc = "Organize Imports" })
 		vim.keymap.set("n", "<leader>ev", jdtls.extract_variable, { buffer = bufnr, desc = "Extract Variable" })
