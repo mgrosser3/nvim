@@ -44,9 +44,12 @@ vim.list_extend(bundles, java_test_bundles)
 -- root directory name. If no root marker (.git, gradlew, etc.) is found,
 -- the current file name is used as a fallback.
 local home = is_windows and os.getenv("USERPROFILE") or os.getenv("HOME")
-local root_dir = require("jdtls.setup").find_root({ ".git", "gradlew", "gradle.properties", "settings.gradle.kts" })
-local project = root_dir and vim.fn.fnamemodify(root_dir, ":p:h:t")
-	or vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ":t:r")
+local root_dir = require("jdtls.setup").find_root({ ".git", "gradlew", "mvnw", "pom.xml", "gradle.properties", "settings.gradle.kts" })
+local function make_project_name(path)
+	return vim.fn.fnamemodify(path, ":t") .. "-" .. vim.fn.sha256(path):sub(1, 8)
+end
+local project = root_dir and make_project_name(root_dir)
+	or make_project_name(vim.api.nvim_buf_get_name(0))
 local workspace = home .. "/.eclipse/jdtls-workspace/" .. project
 
 local config = {
