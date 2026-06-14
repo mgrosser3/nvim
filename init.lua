@@ -65,11 +65,6 @@ vim.opt.clipboard:append("unnamedplus")
 vim.opt.modifiable = true -- buffers per default modifiable
 vim.opt.encoding = "UTF-8"
 
--- Use systems default shell
-if vim.env.SHELL and vim.env.SHELL ~= "" then
-	vim.o.shell = vim.env.SHELL
-end
-
 --
 -- Key Bindings
 --
