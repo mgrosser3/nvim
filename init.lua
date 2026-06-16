@@ -61,7 +61,6 @@ vim.opt.splitbelow = true
 vim.opt.autochdir = false -- don't change the working directory automatically
 vim.opt.iskeyword:append("-")
 vim.opt.mouse:append("a") -- enable mouse support for all modes
-vim.opt.clipboard:append("unnamedplus")
 vim.opt.modifiable = true -- buffers per default modifiable
 vim.opt.encoding = "UTF-8"
 
