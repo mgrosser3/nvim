@@ -119,6 +119,10 @@ elseif vim.uv.os_uname().sysname == "Linux" then
 	pcall(require, "linux")
 end
 
+-- Must be set after OS-specific config to
+-- use the correct clipboard provider!
+vim.opt.clipboard:append("unnamedplus")
+
 --
 -- GUI specific configuration
 -- ./lua/gui.lua
