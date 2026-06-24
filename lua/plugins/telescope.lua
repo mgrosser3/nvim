@@ -40,6 +40,7 @@ return {
 			vim.keymap.set("n", "<leader>fw", builtin.grep_string, { desc = "grep string" })
 			vim.keymap.set("n", "<leader>fd", builtin.live_grep, { desc = "live grep" })
 			vim.keymap.set("n", "<leader>fr", builtin.registers, { desc = "registers" })
+			vim.keymap.set("n", "<leader>fm", builtin.marks, { desc = "marks" })
 		end,
 	},
 }
