@@ -59,32 +59,34 @@ return {
 			local lspconfig_mason = require("mason-lspconfig")
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-			local on_attach = function(_, bufnr)
-				local opts = { buffer = bufnr, remap = false }
+			vim.api.nvim_create_autocmd("LspAttach", {
+				callback = function(args)
+					local opts = { buffer = args.buf, remap = false }
 
-				vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-				vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-				vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-				vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-				vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-				vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
-				vim.keymap.set("n", "[d", function()
-					vim.diagnostic.jump({ count = -1 })
-				end, opts)
-				vim.keymap.set("n", "]d", function()
-					vim.diagnostic.jump({ count = 1 })
-				end, opts)
-				vim.keymap.set("n", "<leader>vrn", vim.lsp.buf.rename, opts)
-				vim.keymap.set("n", "<leader>vca", vim.lsp.buf.code_action, opts)
-				vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, opts)
-				vim.keymap.set("n", "<leader>vws", vim.lsp.buf.workspace_symbol, opts)
-				vim.keymap.set("n", "]e", function()
-					vim.diagnostic.jump({
-						count = 1,
-						severity = vim.diagnostic.severity.ERROR,
-					})
-				end, opts)
-			end
+					vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+					vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+					vim.keymap.set("n", "gr", require("telescope.builtin").lsp_references, opts)
+					vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+					vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+					vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
+					vim.keymap.set("n", "[d", function()
+						vim.diagnostic.jump({ count = -1 })
+					end, opts)
+					vim.keymap.set("n", "]d", function()
+						vim.diagnostic.jump({ count = 1 })
+					end, opts)
+					vim.keymap.set("n", "<leader>vrn", vim.lsp.buf.rename, opts)
+					vim.keymap.set("n", "<leader>vca", vim.lsp.buf.code_action, opts)
+					vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, opts)
+					vim.keymap.set("n", "<leader>vws", vim.lsp.buf.workspace_symbol, opts)
+					vim.keymap.set("n", "]e", function()
+						vim.diagnostic.jump({
+							count = 1,
+							severity = vim.diagnostic.severity.ERROR,
+						})
+					end, opts)
+				end,
+			})
 
 			-- List of language servers to be installed
 			local servers = { "lua_ls", "pyright", "jdtls", "ts_ls" }
@@ -101,7 +103,6 @@ return {
 					-- without a "custom handler"
 					function(server_name)
 						lspconfig[server_name].setup({
-							on_attach = on_attach,
 							capabilities = capabilities,
 						})
 					end,

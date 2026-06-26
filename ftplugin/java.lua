@@ -1,3 +1,9 @@
+-- Tabstop
+vim.opt.tabstop = 4 -- width of tab character
+vim.opt.softtabstop = 4 -- amount of white space to be added
+vim.opt.shiftwidth = 4 -- amount of white space to add in normal mode
+vim.opt.expandtab = true -- use spaces instead of tabs
+
 -- lua module jdtls is provided by mfussenegger/nvim-jdtls (see lsp.lua)
 local status, jdtls = pcall(require, "jdtls")
 
@@ -31,12 +37,18 @@ local java_debug_bundle = vim.fn.glob(java_debug_path .. "/extension/server/com.
 local java_test_bundles =
 	vim.split(vim.fn.glob(java_test_path .. "/extension/server/*.jar", true), "\n", { trimempty = true })
 
+-- Spring Boot Tools JARs
+local spring_boot_path = mason_path .. "/vscode-spring-boot-tools"
+local spring_boot_bundles =
+	vim.split(vim.fn.glob(spring_boot_path .. "/extension/jars/*.jar", true), "\n", { trimempty = true })
+
 -- Collect all necessary bundles into bundles (see init_options)
 local bundles = {}
 if java_debug_bundle ~= "" then
 	vim.list_extend(bundles, { java_debug_bundle })
 end
 vim.list_extend(bundles, java_test_bundles)
+vim.list_extend(bundles, spring_boot_bundles)
 
 -- JDTLS requires a dedicated workspace directory per project to store metadata,
 -- caches, and project configurations. The workspace is placed centrally under
@@ -44,12 +56,18 @@ vim.list_extend(bundles, java_test_bundles)
 -- root directory name. If no root marker (.git, gradlew, etc.) is found,
 -- the current file name is used as a fallback.
 local home = is_windows and os.getenv("USERPROFILE") or os.getenv("HOME")
-local root_dir = require("jdtls.setup").find_root({ ".git", "gradlew", "mvnw", "pom.xml", "gradle.properties", "settings.gradle.kts" })
+local root_dir = require("jdtls.setup").find_root({
+	".git",
+	"gradlew",
+	"mvnw",
+	"pom.xml",
+	"gradle.properties",
+	"settings.gradle.kts",
+})
 local function make_project_name(path)
 	return vim.fn.fnamemodify(path, ":t") .. "-" .. vim.fn.sha256(path):sub(1, 8)
 end
-local project = root_dir and make_project_name(root_dir)
-	or make_project_name(vim.api.nvim_buf_get_name(0))
+local project = root_dir and make_project_name(root_dir) or make_project_name(vim.api.nvim_buf_get_name(0))
 local workspace = home .. "/.eclipse/jdtls-workspace/" .. project
 
 local config = {
