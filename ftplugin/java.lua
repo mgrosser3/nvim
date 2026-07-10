@@ -37,6 +37,20 @@ local java_debug_bundle = vim.fn.glob(java_debug_path .. "/extension/server/com.
 local java_test_bundles =
 	vim.split(vim.fn.glob(java_test_path .. "/extension/server/*.jar", true), "\n", { trimempty = true })
 
+local home = is_windows and os.getenv("USERPROFILE") or os.getenv("HOME")
+
+-- Lombok JAR (javaagent for annotation processing in JDTLS)
+-- Note: vim.fn.glob sorts alphabetically, so this picks the alphabetically last
+-- JAR across the whole Gradle cache, not necessarily the newest and not the
+-- version pinned by the current project.
+local lombok_jars = vim.fn.glob(
+	home .. "/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/*/*/lombok-*.jar",
+	true,
+	true
+)
+lombok_jars = vim.tbl_filter(function(p) return not p:match("sources") end, lombok_jars)
+local lombok_jar = (#lombok_jars > 0) and lombok_jars[#lombok_jars] or nil
+
 -- Spring Boot Tools JARs
 local spring_boot_path = mason_path .. "/vscode-spring-boot-tools"
 local spring_boot_bundles =
@@ -55,7 +69,6 @@ vim.list_extend(bundles, spring_boot_bundles)
 -- ~/.eclipse/jdtls-workspace/<project>, where <project> is derived from the
 -- root directory name. If no root marker (.git, gradlew, etc.) is found,
 -- the current file name is used as a fallback.
-local home = is_windows and os.getenv("USERPROFILE") or os.getenv("HOME")
 local root_dir = require("jdtls.setup").find_root({
 	".git",
 	"gradlew",
@@ -70,32 +83,37 @@ end
 local project = root_dir and make_project_name(root_dir) or make_project_name(vim.api.nvim_buf_get_name(0))
 local workspace = home .. "/.eclipse/jdtls-workspace/" .. project
 
+local cmd = {
+	"java",
+
+	"-Declipse.application=org.eclipse.jdt.ls.core.id1",
+	"-Dosgi.bundles.defaultStartLevel=4",
+	"-Declipse.product=org.eclipse.jdt.ls.core.product",
+	"-Dlog.protocol=true",
+	"-Dlog.level=ALL",
+
+	"-Xmx1g",
+	"--add-modules=ALL-SYSTEM",
+	"--add-opens",
+	"java.base/java.util=ALL-UNNAMED",
+	"--add-opens",
+	"java.base/java.lang=ALL-UNNAMED",
+
+	"-jar",
+	jdtls_launcher,
+	"-configuration",
+	jdtls_config,
+	"-data",
+	workspace,
+}
+if lombok_jar then
+	table.insert(cmd, 9, "-javaagent:" .. lombok_jar)
+end
+
 local config = {
 	capabilities = require("cmp_nvim_lsp").default_capabilities(),
 	-- command to start the language server
-	cmd = {
-		"java",
-
-		"-Declipse.application=org.eclipse.jdt.ls.core.id1",
-		"-Dosgi.bundles.defaultStartLevel=4",
-		"-Declipse.product=org.eclipse.jdt.ls.core.product",
-		"-Dlog.protocol=true",
-		"-Dlog.level=ALL",
-
-		"-Xmx1g",
-		"--add-modules=ALL-SYSTEM",
-		"--add-opens",
-		"java.base/java.util=ALL-UNNAMED",
-		"--add-opens",
-		"java.base/java.lang=ALL-UNNAMED",
-
-		"-jar",
-		jdtls_launcher,
-		"-configuration",
-		jdtls_config,
-		"-data",
-		workspace,
-	},
+	cmd = cmd,
 
 	-- identify project root directory
 	root_dir = root_dir,
