@@ -1,8 +1,8 @@
 -- This configuration file is necessary if you want to used
 -- a graphical interface for Neovim.
 
--- Use font JetBrains Mono (Nerd Font)
-vim.o.guifont = "JetBrainsMono NFM:h11"
+-- GUI Font (e.g. Neovide)
+vim.o.guifont = "JetBrainsMono Nerd Font:h10"
 
 -- Space between lines
-vim.opt.linespace = 3
+vim.opt.linespace = 8
