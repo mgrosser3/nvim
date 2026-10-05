@@ -85,6 +85,14 @@ vim.keymap.set("t", "<esc>", [[<C-\><C-n>]])
 -- (also triggers InsertLeave autocommands)
 vim.keymap.set("i", "<C-c>", "<ESC>")
 
+--
+-- Custom keymaps
+-- ./lua/keymaps.lua
+--
+if vim.fn.has("keymaps") then
+	pcall(require, "keymaps")
+end
+
 -- Diagnostics
 -- Disabled by default in Neovim 0.11.
 vim.diagnostic.config({ virtual_text = true })
