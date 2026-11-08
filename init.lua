@@ -1,3 +1,6 @@
+-- Colorscheme
+vim.cmd.colorscheme("habamax")
+
 --
 -- Global Variables
 -- :help global-variables
@@ -11,12 +14,6 @@ vim.g.maplocalleader = " "
 -- :help options
 --
 
--- Tabstop
-vim.opt.tabstop = 2 -- width of tab character
-vim.opt.softtabstop = 2 -- amount of white space to be added
-vim.opt.shiftwidth = 2 -- amount of white space to add in normal mode
-vim.opt.expandtab = true -- use spaces instead of tabs
-
 -- Line wrapping
 --
 -- By default, line wrapping is disabled to keep
@@ -28,6 +25,10 @@ vim.opt.wrapmargin = 0 -- chars from the right border where wrapping starts
 
 -- Indentation
 vim.opt.smartindent = true -- autoindenting when starting a new line
+vim.opt.tabstop = 2 -- width of tab character
+vim.opt.softtabstop = 2 -- amount of white space to be added
+vim.opt.shiftwidth = 2 -- amount of white space to add in normal mode
+vim.opt.expandtab = true -- use spaces instead of tabs
 
 -- Folding
 vim.o.foldmethod = "syntax" -- use syntax fold method
@@ -45,24 +46,21 @@ vim.opt.relativenumber = true -- enable relative line numbers
 vim.opt.colorcolumn = "80" -- highlighted line length
 vim.opt.signcolumn = "yes:2" -- draw the signcolumn (default = "auto")
 vim.opt.cmdheight = 1 -- number of lines to use for the command-line
-vim.opt.scrolloff = 5 -- number of lines to keep above and below the cursor
+vim.opt.scrolloff = 3 -- number of lines to keep above and below the cursor
 vim.opt.completeopt = "menuone,noinsert,noselect"
 vim.opt.cursorline = true
 
 -- Behaviour
+vim.opt.autochdir = false -- don't change the working directory automatically
 vim.opt.errorbells = false -- switch off noise in case of errors
 vim.opt.swapfile = false -- disable swapfiles for buffers
 vim.opt.backup = false -- disable backup file
 vim.opt.undofile = true -- enable undo files
-vim.opt.undodir = vim.fn.expand("~/.nvim/undo")
 vim.opt.backspace = "indent,eol,start"
 vim.opt.splitright = true
 vim.opt.splitbelow = true
-vim.opt.autochdir = false -- don't change the working directory automatically
-vim.opt.iskeyword:append("-")
 vim.opt.mouse:append("a") -- enable mouse support for all modes
-vim.opt.modifiable = true -- buffers per default modifiable
-vim.opt.encoding = "UTF-8"
+vim.opt.iskeyword:append("-")
 
 --
 -- Key Bindings
@@ -85,19 +83,11 @@ vim.keymap.set("t", "<esc>", [[<C-\><C-n>]])
 -- (also triggers InsertLeave autocommands)
 vim.keymap.set("i", "<C-c>", "<ESC>")
 
---
--- Custom keymaps
--- ./lua/keymaps.lua
---
-if vim.fn.has("keymaps") then
-	pcall(require, "keymaps")
-end
-
 -- Diagnostics
 -- Disabled by default in Neovim 0.11.
 vim.diagnostic.config({ virtual_text = true })
 
--- Toggle line wrapping with <leader>w
+-- Toggle line wrapping 
 vim.keymap.set("n", "<leader>w", function()
 	vim.opt.wrap = not vim.opt.wrap:get()
 	if vim.opt.wrap:get() then
@@ -107,54 +97,72 @@ vim.keymap.set("n", "<leader>w", function()
 	end
 end, { desc = "Toggle line wrap" })
 
+-- Function loads additional modules
+local function load_module(module)
+  local path = package.searchpath(module, package.path)
+
+  -- nothing to load
+  if not path then
+    return false
+  end
+
+  -- load module
+  local ok, err = pcall(require, module)
+
+  if not ok then
+    vim.notify("Failed to laod module '"..module.."':\n"..err,
+      vim.log.levels.ERROR)
+    return false
+  end
+
+  return true
+end
+
+--
+-- Additional custom options 
+-- ./lua/options.lua
+--
+load_module("options")
+
+--
+-- Additional custom keymaps
+-- ./lua/keymaps.lua
+--
+load_module("keymaps")
+
 --
 -- Custom auto-commands
 -- ./lua/autocmd.lua
 --
-if vim.fn.has("autocmd") then
-	pcall(require, "autocmd")
-end
-
---
--- Windows specific configuration
--- ./lua/windows.lua
---
-if vim.uv.os_uname().sysname == "Windows_NT" then
-	pcall(require, "windows")
-elseif vim.uv.os_uname().release:find("WSL") then
-	pcall(require, "wsl")
-elseif vim.uv.os_uname().sysname == "Linux" then
-	pcall(require, "linux")
-end
-
--- Must be set after OS-specific config to
--- use the correct clipboard provider!
-vim.opt.clipboard:append("unnamedplus")
+load_module("autocmd")
 
 --
 -- GUI specific configuration
 -- ./lua/gui.lua
 --
-if vim.fn.has("gui_running") then
-	pcall(require, "gui")
+load_module("gui")
+
+--
+-- OS specific configuration
+-- ./lua/windows.lua
+--
+if vim.uv.os_uname().sysname == "Windows_NT" then
+	load_module("windows")
+elseif vim.uv.os_uname().release:find("WSL") then
+	load_module("wsl")
+elseif vim.uv.os_uname().sysname == "Linux" then
+	load_module("linux")
 end
 
 --
--- Package Manager lazy.vim
--- https://github.com/folke/lazy.nvim
+-- Plugin Package-Manager
+-- ./lua/plugins
 --
+-- Configure your custom plugin management using either
+-- Neovim's built-in package manager or Lazy.nvim.
+-- 
+load_module("plugins")
 
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.uv.fs_stat(lazypath) then
-	vim.fn.system({
-		"git",
-		"clone",
-		"--filter=blob:none",
-		"https://github.com/folke/lazy.nvim.git",
-		"--branch=stable", -- latest stable release
-		lazypath,
-	})
-end
-
-vim.opt.rtp:prepend(lazypath)
-require("lazy").setup({ { import = "plugins" } })
+-- Must be set after OS-specific config to
+-- use the correct clipboard provider!
+vim.opt.clipboard:append("unnamedplus")
