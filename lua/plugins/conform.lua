@@ -19,14 +19,28 @@ return {
           css = { 'prettier' },
           json = { 'prettier' },
           yaml = { 'prettier' },
-          markdown = { 'prettier' },
+          markdown = { 'prettier_markdown' },
           haskell = { 'ormolu' },
+        },
+
+        formatters = {
+          prettier_markdown = {
+            command = "prettier",
+            args = {
+              "--prose-wrap",
+              "always",
+              "--print-width",
+              "80",
+              "--stdin-filepath",
+              "$FILENAME",
+            },
+          },
         },
 
         format_on_save = {
           -- I recommend these options. See :help conform.format for details.
           lsp_fallback = true,
-          timeout_ms   = 3000,
+          timeout_ms   = 500,
         },
       }
     end
